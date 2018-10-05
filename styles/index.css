@@ -1,0 +1,31 @@
+/*
+'Number 3', blueish palette, Digital synopsis
+#2a4d69
+#4b86b4
+#adcbe3
+#e7eff6
+#63ace5
+*/
+html {
+  background-color: #adcbe3;
+}
+
+body {
+  width: 60%;
+  min-width: 600px;
+  margin: 0 auto;
+  background-color: #2a4d69;
+  padding: 0 20px 20px 20px;
+  border: 1px solid #4b86b4;
+}
+
+p {
+  color: #e7eff6;
+}
+
+.contacts {
+}
+.contacts > h2 {
+  color: #e7eff6;
+  text-shadow: 1px, 1px, #adcbe3;
+}
