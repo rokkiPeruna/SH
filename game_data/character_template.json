@@ -1,0 +1,71 @@
+{
+  "file_name": "character.json",
+  "data": "character",
+  "data_type": "object",
+  "character": {
+    "PersonalData": {
+      "Name": "name",
+      "PrimaryAlias": "alias",
+      "Metatype": null,
+      "Ethnicity": null,
+      "Age": 0,
+      "Sex": null,
+      "Height": 0,
+      "Weigth": 0,
+      "StreedCred": 0,
+      "Notoriety": null,
+      "PublicAwareness": null,
+      "Karma": null,
+      "TotalKarma": null,
+      "Misc": null
+    },
+    "Attributes": {
+
+    },
+    "Skills": {
+
+    },
+    "IDS/Lifestyles/Currency": {
+
+    },
+    "CoreCombatInfo": {
+
+    },
+    "ConditionMonitor": {
+
+    },
+    "Qualities": {
+
+    },
+    "Contacts": {
+
+    },
+    "RangedWeapons": {
+
+    },
+    "MeleeWeapons": {
+
+    },
+    "Armor": {
+
+    },
+    "CyberDeck": {
+
+    },
+    "Augmentations": {
+
+    },
+    "Vehicle": {
+
+    },
+    "Gear": {
+
+    },
+    "Spells/PreparationRituals/ComplexForms": {
+
+    },
+    "AdeptPowersOrOtherAbilities": {
+
+    }
+  }
+}

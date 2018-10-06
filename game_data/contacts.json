@@ -4,24 +4,24 @@
   "data_type": "list",
   "contacts": [
     {
-      "name": "Henrik Hägglund",
-      "likes_me": 6,
+      "Name": "Henrik Hägglund",
+      "Likes me": 6,
       "Influence": 4,
-      "story": "Known from previous work at G4S. Armory caretaker, has limited access to restricted weapons and armors. We used to bowl together. Part of the famous Finnish military family, uncle is an admiral at Finnish navy.",
+      "Story": "Known from previous work at G4S. Armory caretaker, has limited access to restricted weapons and armors. We used to bowl together. Part of the famous Finnish military family, uncle is an admiral at Finnish navy.",
       "image_path": "images/henrikhagglund.jpg"
     },
     {
-      "name": "Janne Tapiola-If",
-      "likes_me": 5,
+      "Name": "Janne Tapiola-If",
+      "Likes me": 5,
       "Influence": 3,
-      "story": "Known from previous job as insurance salesman. Janne handles customer database at -insert-company-here-. Skillful programmer. Married to a Kenian embassy worker.",
+      "Story": "Known from previous job as insurance salesman. Janne handles customer database at -insert-company-here-. Skillful programmer. Married to a Kenian embassy worker.",
       "image_path": "images/jannetapiolaif.jpg"
     },
     {
-      "name": "Helga Wuolikoski",
-      "likes_me": 4,
+      "Name": "Helga Wuolikoski",
+      "Likes me": 4,
       "Influence": 2,
-      "story": "Known from Pohjois-Haaga. Works as a ringleader at the local worker  community, PH-United. Has contacts to local gangs that do some dirty work for them occasionally.",
+      "Story": "Known from Pohjois-Haaga. Works as a ringleader at the local worker  community, PH-United. Has contacts to local gangs that do some dirty work for them occasionally.",
       "image_path": "images/helgawuolikoski.jpg"
     }
   ]
