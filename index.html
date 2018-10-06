@@ -5,6 +5,7 @@
     <title> Horny people near you! </title>
     <link rel="stylesheet" href="styles/index.css" type="text/css">
     <script src="js/jquery-3.3.1.js"></script>
+    <script src="scripts/character.js"></script>
     <script src="scripts/contacts.js"></script>
   </head>
 
@@ -16,12 +17,26 @@
       <button type="button" id="upper-select-contacts">CONTACTS</button>
     </div>
 
-    <div class="character">
-      <h1>This is character:</h1>
-      <p>
-        <br>
-      </p>
+    <div class="home">
+        <h1>ShadowRun Character and Contacts</h1>
+        <p><br><br>
+        Application meant for players and gamemasters of Shadowrun tabletop.
+        <br>Work in progress, but desired features are as follows:
+        </p>
+        <ul>
+          <li>Create character using template JSON</li>
+          <li>Store created character to database</li>
+          <li>Modify the character as you play</li>
+          <li>Player can see her/his character, GM can see all characters</li>
+          <li>And more...</li>
+        </ul>
+    </div>
 
+    <div class="character">
+      <h2 id="character-header">Character info comes here:</h2>
+      <div id="character-main-secs">
+        <!-- character.js adds stuff here -->
+      </div>
     </div>
 
     <div class="contacts">

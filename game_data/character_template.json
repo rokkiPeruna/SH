@@ -3,24 +3,46 @@
   "data": "character",
   "data_type": "object",
   "character": {
-    "PersonalData": {
-      "Name": "name",
-      "PrimaryAlias": "alias",
-      "Metatype": null,
-      "Ethnicity": null,
-      "Age": 0,
-      "Sex": null,
-      "Height": 0,
-      "Weigth": 0,
-      "StreedCred": 0,
-      "Notoriety": null,
-      "PublicAwareness": null,
-      "Karma": null,
-      "TotalKarma": null,
-      "Misc": null
+    "Personal Data": {
+      "Name": "Your Name",
+      "Primary Alias": "Your Alias",
+      "Metatype": "Your Metatype",
+      "Ethnicity": "Your ethnicity",
+      "Age": 666,
+      "Sex": "Your sex",
+      "Height": 250,
+      "Weigth": 120,
+      "Streed Cred": 1,
+      "Notoriety": "Are you badass?",
+      "Public Awareness": "Does someone know you",
+      "Karma": "is a bitch",
+      "Total Karma": "is a total bitch",
+      "Misc": "I like butterflies"
     },
     "Attributes": {
-
+      "Body": 1,
+      "Agility": 1,
+      "Reaction": 1,
+      "Strength": 1,
+      "Willpower": 1,
+      "Logic": 1,
+      "Intuition": 1,
+      "Charisma": 1,
+      "Edge": 1,
+      "Edge points": 1,
+      "Essence": 1,
+      "Magic/Resonance": 1,
+      "Initiative": 1,
+      "Matrix initiative": 1,
+      "Astral initiative": 1,
+      "Composure": 1,
+      "Judge intentions": 1,
+      "Memory": 1,
+      "Lift/carry": 1,
+      "Movement": 1,
+      "Physical limit": 1,
+      "Mental limit": 1,
+      "Social limit": 1
     },
     "Skills": {
 
@@ -28,10 +50,10 @@
     "IDS/Lifestyles/Currency": {
 
     },
-    "CoreCombatInfo": {
+    "Core Combat Info": {
 
     },
-    "ConditionMonitor": {
+    "Condition Monitor": {
 
     },
     "Qualities": {
@@ -40,16 +62,16 @@
     "Contacts": {
 
     },
-    "RangedWeapons": {
+    "Ranged Weapons": {
 
     },
-    "MeleeWeapons": {
+    "Melee Weapons": {
 
     },
     "Armor": {
 
     },
-    "CyberDeck": {
+    "Cyber Deck": {
 
     },
     "Augmentations": {
@@ -61,10 +83,10 @@
     "Gear": {
 
     },
-    "Spells/PreparationRituals/ComplexForms": {
+    "Spells / PreparationRituals / ComplexForms": {
 
     },
-    "AdeptPowersOrOtherAbilities": {
+    "Adept Powers Or Other Abilities": {
 
     }
   }
