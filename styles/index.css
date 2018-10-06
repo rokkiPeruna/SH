@@ -13,6 +13,8 @@
   --main-button-color: #adcbe3;
   --main-button-hover-color: #e7eff6;
   --common-text-shadow-attr: 0px 0px 1px #63ace5;
+  --common-font-size: 20px;
+  --common--button-font-size: 22px;
 }
 
 html {
@@ -20,12 +22,12 @@ html {
 }
 
 body {
-  font-size: 20px;
+  font-size: var(--common-font-size);
   min-width: 20em;
   max-width: 40em;
   margin: 0 auto;
   background-color: var(--main-body-color);
-  padding: 0 1em 1em 1em;
+  padding: 0 0.1em 0.1em 0.1em;
   border: var(--main-body-border-attr);
 }
 
@@ -38,38 +40,49 @@ h1, h2, h3, h4, h5, h6, p, li {
 }
 
 .upper-select {
+  display: inline-block;
+  background-color: black;
+  /* padding: 1em 0 1em 0; */
+  /* margin: 1em 0em 1em 0; /* top and bottom only */ */
+  margin: auto;
   position: sticky;
   top: 0;
-  height: 3em;
+  height: 4em;
   width: 100%;
-  display: inline-block;
 }
 
 .upper-select > button {
-  background-color: var(--main-button-color);
+  /* background-color: var(--main-button-color); */
+  background-color: black;
+  color: white;
+  font-size: var(--common--button-font-size);
+  text-shadow: var(--common-text-shadow-attr);
   border: 0.1em solid #63ace5;
-  border: none;
-  margin: none;
+  margin: auto;
   height: inherit;
-  align-content: center;
   min-width: 32.9%;
   max-width: 33.33%;
   text-align: center;
   /* padding: 0.1em 0.1em; */
 }
 .upper-select > button:hover {
-  background-color: var(--main-button-hover-color);
+  /* background-color: var(--main-button-hover-color); */
+  background-color: white;
+  color: black;
 }
 
 /* Character data */
 #character-main-secs > button {
   display: block;
-  background-color: var(--main-button-color);
+  font-size: var(--common--button-font-size);
+  text-shadow: var(--common-text-shadow-attr);
+  /* background-color: var(--main-button-color); */
   border: 0.2em solid #63ace5;
   margin: 1em 0 1em 0; /* top and bottom only */
   height: inherit;
   align-content: center;
   width: 100%;
+  min-height: 3em;
   text-align: center;
   padding: 1em 1em;
 }
@@ -90,8 +103,10 @@ h1, h2, h3, h4, h5, h6, p, li {
 }
 #contacts-ulist > button {
   /* display: inline-block; */
+  font-size: var(--common--button-font-size);
+  text-shadow: var(--common-text-shadow-attr);
   width: 100%;
-  height: 3em;
+  min-height: 3em;
 }
 #contacts-ulist > img {
   display: block;
