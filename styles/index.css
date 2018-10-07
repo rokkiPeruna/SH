@@ -10,6 +10,11 @@
   --main-bg-color: #adcbe3;
   --main-body-color: #2a4d69;
   --main-body-border-attr: 1px solid #4b86b4;
+
+  --main-upper-select-color: #000000;
+  --main-upper-select-btn-color: #000000;
+  --main-upper-select-btn-hover-color: #ffffff;
+
   --main-button-color: #adcbe3;
   --main-button-hover-color: #e7eff6;
   --common-text-shadow-attr: 0px 0px 1px #63ace5;
@@ -17,21 +22,67 @@
   --common--button-font-size: 22px;
 }
 
+/*
+Inspiration and tips taken from
+http://coderchronicles.org/2016/04/12/create-a-full-screen-layout-for-mobile-web-apps/
+*/
+
+/* Box layout model*/
+html, body {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 html {
+  height: 100%;
+  width: 100%;
   background-color: var(--main-bg-color);
 }
 
 body {
   font-size: var(--common-font-size);
-  min-width: 20em;
-  max-width: 40em;
-  margin: 0 auto;
-  background-color: var(--main-body-color);
-  padding: 0 0.1em 0.1em 0.1em;
-  border: var(--main-body-border-attr);
+
+  /* For pagers that might scroll */
+  min-height: 100%;
+
+  /* No unwanted scroll bars */
+  margin: 0;
+  padding: 0;
+
+  /* Background should only be visible in larger screen devices (desktop etc.)
+  and since body is as wide as html, is should be handled as (seen from visual
+  perspective) html element */
+  background-color: var(--main-bg-color);
 }
 
-/* Common properties*/
+#app-container {
+  /* Block height is viewport height units -> screen height shown even if
+  block doesn't contain that much material */
+  min-height: 100vh;
+
+  /* Center this block for larger screen devices (desktop etc.) */
+  margin: 0 auto;
+
+  /* For small windows */
+  max-width: 31em;
+
+  /* To prevent crushing when resizing to (too) small */
+  min-width: 20em;
+
+  padding: 1em;
+
+  /* Top padding added so that fixed header won't cover stuff. Should be atleast
+  as much as 'upper-select's height */
+  padding-top: 4em;
+
+  /* As html and body element are same size, 'app-container' should be seen (from
+  visual perspective) as 'the' body */
+  background-color: var(--main-body-color);
+}
+
+/* Common text properties*/
 h1, h2, h3, h4, h5, h6, p, li {
   font-kerning: auto;
   color: #e7eff6;
@@ -39,81 +90,115 @@ h1, h2, h3, h4, h5, h6, p, li {
   text-shadow: var(--common-text-shadow-attr);
 }
 
+/* 'upper-select' works as a fixed menu bar */
 .upper-select {
-  display: inline-block;
-  background-color: black;
-  /* padding: 1em 0 1em 0; */
-  /* margin: 1em 0em 1em 0; /* top and bottom only */ */
-  margin: auto;
-  position: sticky;
+  position: fixed;
   top: 0;
-  height: 4em;
-  width: 100%;
-}
+  left: 0;
+  right: 0;
+  z-index: 10;
 
-.upper-select > button {
-  /* background-color: var(--main-button-color); */
+  /* Should match the one in 'app-container' */
+  min-width: 20em;
+
+  /* Arbitrary values */
+  height: 4em;
+  padding: 1em;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
   background-color: black;
+  color: white;
+}
+/* Buttons with text */
+.upper-select > button[id$="-btn"] {
+  flex: 1;
+  text-align: center;
+  height: inherit;
   color: white;
   font-size: var(--common--button-font-size);
   text-shadow: var(--common-text-shadow-attr);
-  border: 0.1em solid #63ace5;
-  margin: auto;
-  height: inherit;
-  min-width: 32.9%;
-  max-width: 33.33%;
-  text-align: center;
+  border: none;
+  border-right: : 0.1em solid #63ace5;
+  background-color: var(--main-upper-select-btn-color);
   /* padding: 0.1em 0.1em; */
 }
-.upper-select > button:hover {
-  /* background-color: var(--main-button-hover-color); */
-  background-color: white;
-  color: black;
+.upper-select > button[id$="-btn"]:hover {
+  background-color: var(--main-upper-select-btn-hover-color);
+  color: var(--main-upper-select-btn-color);
 }
+
+/* Buttons with icons */
+.upper-select > button[id$="-icon"] {
+  background-color: #2a4d69;
+  border: 0.5em solid #4b86b4;
+  height: inherit;
+  width: 7em;
+}
+.upper-select > button[id$="-icon"]:hover {
+  background-color: var(--main-button-hover-color);
+  background-color: var(--main-upper-select-btn-hover-color);
+  /* color: var(--main-upper-select-btn-color); */
+  /* color: RoyalBlue; */
+}
+
 
 /* Character data */
 #character-main-secs > button {
   display: block;
   font-size: var(--common--button-font-size);
   text-shadow: var(--common-text-shadow-attr);
-  /* background-color: var(--main-button-color); */
+  background-color: var(--main-button-color);
   border: 0.2em solid #63ace5;
-  margin: 1em 0 1em 0; /* top and bottom only */
+  margin: 1em auto 1em auto; /* top and bottom only */
   height: inherit;
   align-content: center;
   width: 100%;
   min-height: 3em;
   text-align: center;
   padding: 1em 1em;
+  border-radius: 8px; /* For rounded button */
 }
-
 
 .contacts {
-
+  margin: none;
+  padding: none;
 }
-.contacts > h2 {
+.contacts > ul {
+  display: inline;
+}
+.contacts > h1, h2 {
   border-style: solid;
+  font-size: 2em;
   border-width: 0.1em;
+  border-radius: 8px; /* For rounding  */
   text-align: center;
+  margin: 3em 0 1em 0;
 }
-.contacts #cont-name {
-  border-style: solid;
-  border-width: 0.1em;
-  padding: 0.2em;
-}
+
 #contacts-ulist > button {
-  /* display: inline-block; */
+  display: block;
   font-size: var(--common--button-font-size);
   text-shadow: var(--common-text-shadow-attr);
+  background-color: var(--main-button-color);
+  border: 0.2em solid #63ace5;
+  margin: 1em auto 1em auto; /* top and bottom only */
+  height: inherit;
+  align-content: center;
   width: 100%;
   min-height: 3em;
+  text-align: center;
+  padding: 1em 1em;
+  border-radius: 8px; /* For rounded button */
 }
 #contacts-ulist > img {
   display: block;
   margin-left: auto;
-  margin-right: auto;
-  padding: 1em;
-  max-width: 30em;
+  margin-right: auto; */
+  padding: 0em;
+  max-width: 28em;
   max-height: auto;
   border-radius: 8px; /* For rounded image */
 }

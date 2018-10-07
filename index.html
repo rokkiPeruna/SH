@@ -4,49 +4,57 @@
     <meta charset="utf-8">
     <title> Horny people near you! </title>
     <link rel="stylesheet" href="styles/index.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="js/jquery-3.3.1.js"></script>
+    <script src="scripts/upper_select.js"></script>
     <script src="scripts/character.js"></script>
     <script src="scripts/contacts.js"></script>
   </head>
 
   <body>
 
-    <div class="upper-select">
-      <button type="button" id="upper-select-home">HOME</button>
-      <button type="button" id="upper-select-character">CHARACTER</button>
-      <button type="button" id="upper-select-contacts">CONTACTS</button>
-    </div>
+    <div id="app-container">
 
-    <div class="home">
-        <h1>ShadowRun Character and Contacts</h1>
-        <p><br><br>
-        Application meant for players and gamemasters of Shadowrun tabletop.
-        <br>Work in progress, but desired features are as follows:
-        </p>
-        <ul>
-          <li>Create character using template JSON</li>
-          <li>Store created character to database</li>
-          <li>Modify the character as you play</li>
-          <li>Player can see her/his character, GM can see all characters</li>
-          <li>And more...</li>
-        </ul>
-    </div>
-
-    <div class="character">
-      <h2 id="character-header">Character info comes here:</h2>
-      <div id="character-main-secs">
-        <!-- character.js adds stuff here -->
+      <div class="upper-select">
+        <button type="button" id="upper-select-menu-icon">
+          <i class="material-icons">menu</i>
+        </button>
+        <button type="button" id="upper-select-home-btn">HOME</button>
+        <button type="button" id="upper-select-character-btn">CHARACTER</button>
+        <button type="button" id="upper-select-contacts-btn">CONTACTS</button>
       </div>
-    </div>
 
-    <div class="contacts">
-      <h2 id="contacts-header">Contacts</h2>
-      <ul id="contacts-ulist">
-        <!-- contacts.js adds stuff here -->
-      </ul>
+      <div class="home">
+          <h1>ShadowRun Character and Contacts</h1>
+          <p><br><br>
+          Application meant for players and gamemasters of Shadowrun tabletop.
+          <br>Work in progress, but desired features are as follows:
+          </p>
+          <ul>
+            <li>Create character using template JSON</li>
+            <li>Store created character to database</li>
+            <li>Modify the character as you play</li>
+            <li>Player can see her/his character, GM can see all characters</li>
+            <li>and more...</li>
+          </ul>
+      </div>
+
+      <div class="character">
+        <h2 id="character-header">Character info comes here:</h2>
+        <div id="character-main-secs">
+          <!-- character.js adds stuff here -->
+        </div>
+      </div>
+
+      <div class="contacts">
+        <h2 id="contacts-header">Contacts</h2>
+        <ul id="contacts-ulist">
+          <!-- contacts.js adds stuff here -->
+        </ul>
+      </div>
+
     </div>
 
   </body>
 
-  </script>
 </html>
