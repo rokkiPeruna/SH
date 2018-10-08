@@ -6,51 +6,54 @@
     <link rel="stylesheet" href="styles/index.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="js/jquery-3.3.1.js"></script>
-    <script src="scripts/upper_select.js"></script>
-    <script src="scripts/character.js"></script>
-    <script src="scripts/contacts.js"></script>
+    <script src="scripts/index.js"></script>
   </head>
 
   <body>
 
     <div id="app-container">
 
-      <div class="upper-select">
-        <button type="button" id="upper-select-menu-icon">
-          <i class="material-icons">menu</i>
-        </button>
-        <button type="button" id="upper-select-home-btn">HOME</button>
-        <button type="button" id="upper-select-character-btn">CHARACTER</button>
-        <button type="button" id="upper-select-contacts-btn">CONTACTS</button>
+      <!-- Upper menu -->
+      <div class="upper-menu">
+        <button type="button" id="upper-menu-about-btn">ABOUT</button>
       </div>
-
-      <div class="home">
-          <h1>ShadowRun Character and Contacts</h1>
-          <p><br><br>
-          Application meant for players and gamemasters of Shadowrun tabletop.
-          <br>Work in progress, but desired features are as follows:
+      <div id="about-modal" class="modal">
+        <div id="about-content" class="modal-content">
+          <span id="about-close">&times;</span>
+          <p>
+            Application meant for players and gamemasters
+            of great tabletop RPGs. Choose game, sign in with your username
+            and password and enjoy!
+            <br><br>
+            Ideas for creating a better experience can forwarded to your's
+            truly, the one punch man.
           </p>
-          <ul>
-            <li>Create character using template JSON</li>
-            <li>Store created character to database</li>
-            <li>Modify the character as you play</li>
-            <li>Player can see her/his character, GM can see all characters</li>
-            <li>and more...</li>
-          </ul>
-      </div>
-
-      <div class="character">
-        <h2 id="character-header">Character info comes here:</h2>
-        <div id="character-main-secs">
-          <!-- character.js adds stuff here -->
         </div>
       </div>
 
-      <div class="contacts">
-        <h2 id="contacts-header">Contacts</h2>
-        <ul id="contacts-ulist">
-          <!-- contacts.js adds stuff here -->
-        </ul>
+      <div id="game-selector">
+
+        <input type="radio" name="game" id="game-selector-rbtn-dnd" checked/>
+        <label for="game-selector-rbtn-dnd">Dungeons & Dragons</label>
+
+        <input type="radio" name="game" id="game-selector-rbtn-sh">
+        <label for="game-selector-rbtn-sh">Shadowrun</label>
+
+      </div>
+
+      <div class="login-form">
+
+        <label for="user-name"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="user-name" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+
       </div>
 
     </div>

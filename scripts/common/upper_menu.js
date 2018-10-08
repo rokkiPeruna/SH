@@ -3,11 +3,11 @@
 jQuery( document ).ready(function() {
 
 //Add callbacks to buttons
-let home_btn = $( "#upper-select-home-btn" );
+let home_btn = $( "#upper-menu-home-btn" );
 let home = $( ".home" );
-let chr_btn = $( "#upper-select-character-btn" );
+let chr_btn = $( "#upper-menu-character-btn" );
 let chr = $( ".character" );
-let cont_btn = $( "#upper-select-contacts-btn" );
+let cont_btn = $( "#upper-menu-contacts-btn" );
 let cont = $( ".contacts" );
 
 let anim_time_ms = 500;

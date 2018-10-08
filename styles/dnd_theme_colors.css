@@ -1,0 +1,35 @@
+/* SHADOW RUN THEME */
+
+/*
+paletton.com !!!
+#2a4d69
+#4b86b4
+#adcbe3
+#e7eff6
+#63ace5
+*/
+:root {
+  /* THEME COLORS */
+  --BG: #242F24;
+  --BODY: #6a5c4d;
+  --HEADER: #9FA2BC;
+  --TEXT: #FFFFFF;
+  --OUTLINE: #A39F6E;
+  --EFFECT: #152115;
+
+  --main-bg-color: var(--BG);
+  --main-body-color: var(--BODY);
+  --main-body-border-attr: 1px solid var(--EFFECT);
+
+  --main-upper-menu-color: #000000; /* Black menu */
+  --main-upper-menu-btn-color: #000000; /* With black buttons */
+  --main-upper-menu-btn-hover-color: #ffffff;
+  --main-upper-menu-icon-color: #73A673;
+  --main-upper-menu-icon-border-color: #445F44;
+
+  --main-button-color: #adcbe3;
+  --main-button-hover-color: #17131C;
+  --common-text-shadow-attr: 0px 0px 1px var(--OUTLINE);
+  --common-font-size: 20px;
+  --common--button-font-size: 22px;
+}

@@ -1,26 +1,4 @@
-/*
-'Number 3', blueish palette, Digital synopsis
-#2a4d69
-#4b86b4
-#adcbe3
-#e7eff6
-#63ace5
-*/
-:root {
-  --main-bg-color: #adcbe3;
-  --main-body-color: #2a4d69;
-  --main-body-border-attr: 1px solid #4b86b4;
-
-  --main-upper-menu-color: #000000;
-  --main-upper-menu-btn-color: #000000;
-  --main-upper-menu-btn-hover-color: #ffffff;
-
-  --main-button-color: #adcbe3;
-  --main-button-hover-color: #e7eff6;
-  --common-text-shadow-attr: 0px 0px 1px #63ace5;
-  --common-font-size: 20px;
-  --common--button-font-size: 22px;
-}
+/* Used as base for 'dnd' and 'sh' */
 
 /*
 Inspiration and tips taken from
@@ -85,20 +63,8 @@ body {
 /* Common text properties*/
 h1, h2, h3, h4, h5, h6, p, li {
   font-kerning: auto;
-  color: #e7eff6;
   font-size: 20px;
-  text-shadow: var(--common-text-shadow-attr);
-}
-label {
-  font-kerning: auto;
-  color: #e7eff6;
-  font-size: 20px;
-  text-shadow: var(--common-text-shadow-attr);
-}
-
-input {
-  font-kerning: auto;
-  font-size: 20px;
+  color: var(--TEXT);
   text-shadow: var(--common-text-shadow-attr);
 }
 
@@ -122,6 +88,7 @@ input {
   align-items: center;
 
   background-color: black;
+  border: 0.2em solid var(--main-upper-menu-icon-border-color);
   color: white;
 }
 /* Buttons with text */
@@ -132,8 +99,9 @@ input {
   color: white;
   font-size: var(--common--button-font-size);
   text-shadow: var(--common-text-shadow-attr);
-  border: none;
-  border-right: : 0.1em solid #63ace5;
+  border: 0.2em solid var(--main-upper-menu-icon-border-color);
+  border-left: none;
+  border-right: none;
   background-color: var(--main-upper-menu-btn-color);
   /* padding: 0.1em 0.1em; */
 }
@@ -144,8 +112,8 @@ input {
 
 /* Buttons with icons */
 .upper-menu > button[id$="-icon"] {
-  background-color: #2a4d69;
-  border: 0.5em solid #4b86b4;
+  background-color: var(--main-upper-menu-icon-color);
+  border: 0.2em solid var(--main-upper-menu-icon-border-color);
   height: inherit;
   width: 7em;
 }
@@ -154,29 +122,14 @@ input {
   background-color: var(--main-upper-menu-btn-hover-color);
 }
 
-.upper-menu .modal {
-  visibility: hidden; /* Initial value */
-}
-.upper-menu .modal-content {
-  visibility: hidden; /* Initial value */
-}
 
-/* Login form */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.login-form > button {
+/* Character data */
+#character-main-secs > button {
   display: block;
   font-size: var(--common--button-font-size);
   text-shadow: var(--common-text-shadow-attr);
   background-color: var(--main-button-color);
-  border: 0.2em solid #63ace5;
+  border: 0.2em solid var(--EFFECT);
   margin: 1em auto 1em auto; /* top and bottom only */
   height: inherit;
   align-content: center;
@@ -185,4 +138,45 @@ input[type=text], input[type=password] {
   text-align: center;
   padding: 1em 1em;
   border-radius: 8px; /* For rounded button */
+}
+
+.contacts {
+  margin: none;
+  padding: none;
+}
+.contacts > ul {
+  display: inline;
+}
+.contacts > h1, h2 {
+  border-style: solid;
+  font-size: 2em;
+  border-width: 0.1em;
+  border-radius: 8px; /* For rounding  */
+  text-align: center;
+  margin: 3em 0 1em 0;
+}
+
+#contacts-ulist > button {
+  display: block;
+  font-size: var(--common--button-font-size);
+  text-shadow: var(--common-text-shadow-attr);
+  background-color: var(--main-button-color);
+  border: 0.2em solid var(--EFFECT);
+  margin: 1em auto 1em auto; /* top and bottom only */
+  height: inherit;
+  align-content: center;
+  width: 100%;
+  min-height: 3em;
+  text-align: center;
+  padding: 1em 1em;
+  border-radius: 8px; /* For rounded button */
+}
+#contacts-ulist > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0em;
+  max-width: 28em;
+  max-height: auto;
+  border-radius: 8px; /* For rounded image */
 }

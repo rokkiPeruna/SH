@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Horny people near you! </title>
+    <link rel="stylesheet" href="styles/sh_master.css" type="text/css">
+    <link rel="stylesheet" href="styles/sh_theme_colors.css" type="text/css">
+    <link rel="stylesheet" href="styles/master.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="scripts/common/upper_menu.js"></script>
+    <script src="scripts/common/parse_character.js"></script>
+    <script src="scripts/sh/contacts.js"></script>
+  </head>
+
+  <body>
+
+    <div id="app-container">
+
+      <div class="upper-menu">
+        <button type="button" id="upper-menu-menu-icon">
+          <i class="material-icons">menu</i>
+        </button>
+        <button type="button" id="upper-menu-home-btn">HOME</button>
+        <button type="button" id="upper-menu-character-btn">CHARACTER</button>
+        <button type="button" id="upper-menu-contacts-btn">CONTACTS</button>
+      </div>
+
+      <div class="home">
+          <h1>ShadowRun Character and Contacts</h1>
+          <p><br><br>
+          Application meant for players and gamemasters of Shadowrun tabletop.
+          <br>Work in progress, but desired features are as follows:
+          </p>
+          <ul>
+            <li>Create character using template JSON</li>
+            <li>Store created character to database</li>
+            <li>Modify the character as you play</li>
+            <li>Player can see her/his character, GM can see all characters</li>
+            <li>and more...</li>
+          </ul>
+      </div>
+
+      <div class="character">
+        <h2 id="character-header">Character info comes here:</h2>
+        <div id="character-main-secs">
+          <!-- character.js adds stuff here -->
+        </div>
+      </div>
+
+      <div class="contacts">
+        <h2 id="contacts-header">Contacts</h2>
+        <ul id="contacts-ulist">
+          <!-- contacts.js adds stuff here -->
+        </ul>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

@@ -4,6 +4,7 @@
   "data_type": "object",
   "character": {
     "Personal Data": {
+      "data_types": ["all_strings"],
       "Name": "Your Name",
       "Primary Alias": "Your Alias",
       "Metatype": "Your Metatype",
@@ -20,6 +21,7 @@
       "Misc": "I like butterflies"
     },
     "Attributes": {
+      "data_types": ["all_integers"],
       "Body": 1,
       "Agility": 1,
       "Reaction": 1,
@@ -44,9 +46,9 @@
       "Mental limit": 1,
       "Social limit": 1
     },
-    "Skills": {
-
-    },
+    "Skills": [
+      {"I can": "fly"}
+    ],
     "IDS/Lifestyles/Currency": {
 
     },
