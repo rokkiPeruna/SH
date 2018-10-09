@@ -25,18 +25,18 @@
             of great tabletop RPGs. Choose game, sign in with your username
             and password and enjoy!
             <br><br>
-            Ideas for creating a better experience can forwarded to your's
+            Ideas for creating a better experience can be forwarded to your's
             truly, the one punch man.
           </p>
         </div>
       </div>
 
-      <div id="game-selector">
+      <div class="game-selector">
 
-        <input type="radio" name="game" id="game-selector-rbtn-dnd" checked/>
+        <input type="radio" name="gamesel" id="game-selector-rbtn-dnd" value="dnd"/>
         <label for="game-selector-rbtn-dnd">Dungeons & Dragons</label>
 
-        <input type="radio" name="game" id="game-selector-rbtn-sh">
+        <input type="radio" name="gamesel" id="game-selector-rbtn-sh" value="sh"/>
         <label for="game-selector-rbtn-sh">Shadowrun</label>
 
       </div>
@@ -49,11 +49,11 @@
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" required>
 
-        <button type="submit">Login</button>
+        <button type="submit" id="index-login-btn">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
-
+        
       </div>
 
     </div>
