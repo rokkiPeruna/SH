@@ -7,18 +7,26 @@ jQuery( document ).ready(function() {
 //---------------------------------------------
 // About -modal
 //---------------------------------------------
-let about_btn = $( "#upper-menu-about-btn" );
-let about_modal = $( ".modal" );
-let about_content = $( ".modal-content" );
-let close_modal = $( "#about-close" );
-about_btn.click(function() {
-  $( ".modal, .modal-content" ).addClass( "active" );
-});
 
-close_modal.click(function() {
-  $( ".modal, .modal-content" ).removeClass( "active" );
+// Get the modal
+var modal = $( "#about-modal" );
+// Get the button that opens the modal
+var btn = $( "#upper-menu-about-btn" );
+// When the user clicks on the button, open the modal
+btn.click(function() {
+  if (modal.css("display") == "none") {
+    modal.css("display", "block");
+  }
+  else {
+    modal.css("display", "none");
+  }
 });
-
+// When the user clicks on the modal, close the it
+modal.click(function() {
+  if (modal.css("display") != "none") {
+    modal.css("display", "none");
+  }
+});
 
 //---------------------------------------------
 // Login
