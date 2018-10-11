@@ -1,5 +1,7 @@
 "use strict"
 
+
+
 jQuery( document ).ready( function() {
 
 // Create character info from JSON loaded from server

@@ -47,7 +47,10 @@
       "Social limit": 1
     },
     "Skills": [
-      {"I can": "fly"}
+      {"I can": {
+        "inner": "of the innermost"
+      }
+    }
     ],
     "IDS/Lifestyles/Currency": {
 
