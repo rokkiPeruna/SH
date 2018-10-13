@@ -1,6 +1,38 @@
 "use strict"
 
+// TODO: Move to conf file when such is created
+var top_elem_prefix     = "top-elem-";
+var top_elem_btn_prefix = "top-elem-btn-"
+var modifier_id_prefix  = "mod-id-for-";
 
+// Create proper modifier depending on the data type of the value
+function create_modifier( key, value ) {
+  if ( typeof value === "string" ) {
+    let label_name = key;
+    let id = modifier_id_prefix + label_name;
+    let elem = //TODO: Move this to a separate HTML file
+      "<div class='string-modifier'> \
+         <p>"+key+"</p>\
+         <label for='"+label_name+"'</label>\
+         <input type='text' name='"+label_name+"' id='"+id+"' value='"+value+"'>\
+      </div>";
+    return elem;
+  }
+  else if ( typeof value === "number" ) {
+    let label_name = key;
+    let id = modifier_id_prefix + label_name;
+    let elem = //TODO: Move this to a separate HTML file
+      "<div class='number-modifier'> \
+         <p>"+key+"</p>\
+         <label for='"+label_name+"'</label>\
+         <input type='number' name='"+label_name+"' id='"+id+"' value='"+value+"'>\
+      </div>";
+    return elem;
+  }
+  else {
+    return "<p>PASKAAAA</p>";
+  }
+}
 
 jQuery( document ).ready( function() {
 
@@ -26,8 +58,8 @@ $.ajax({
       // Key is a valid object
       if ( typeof data[key] == "object" && data[key] !== null) {
         if ( is_top_elem === true ){ //Create button for top element
-          let key_id = "top-elem-" + index;
-          let key_btn_id = "top-elem-btn-" + index++;
+          let key_id = top_elem_prefix + index;
+          let key_btn_id = top_elem_btn_prefix + index++;
 
           // Add div and btn to elem, make div the next element to append to
           let div = $( "<div />", { id: key_id} );
@@ -62,7 +94,7 @@ $.ajax({
       else {
         not_value = false;
         if ( to_appn_to !== undefined ) {
-          to_appn_to.append( "<p>"+ key + ": " + data[key] + " </p>");
+          to_appn_to.append( create_modifier( key, data[key] ) );
         }
         else {
           console.log("Element to append to was undefined");
@@ -70,9 +102,6 @@ $.ajax({
       }
       // Call parser for inner objects and lists also, skip values!
       if ( not_value == true ) {
-        // for ( let innerkey in data[key] ) {
-          // parse_data( data[key][innerkey], false, elem, to_appn_to);
-        // }
         parse_data( data[key], false, elem, to_appn_to);
       }
 

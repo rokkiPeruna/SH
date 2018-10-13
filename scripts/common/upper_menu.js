@@ -11,7 +11,8 @@ let cont_btn = $( "#upper-menu-contacts-btn" );
 let cont = $( ".contacts" );
 
 let anim_time_ms = 500;
-let btns_height = home_btn.height();
+let height_offset = 50;
+let btns_height = home_btn.height() + height_offset;
 
 home_btn.click(function( e ) {
   e.preventDefault();

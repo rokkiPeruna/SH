@@ -32,4 +32,6 @@ paletton.com !!!
   --common-text-shadow-attr: 0px 0px 1px var(--OUTLINE);
   --common-font-size: 20px;
   --common--button-font-size: 22px;
+
+  --attr-bg-color: #86c2f2;
 }

@@ -140,6 +140,49 @@ h1, h2, h3, h4, h5, h6, p, li {
   border-radius: 8px; /* For rounded button */
 }
 
+/* Character attribute modifiers */
+.string-modifier, .number-modifier { /* Common attributes */
+  display: flex;
+  border: solid black;
+  background-color: var(--attr-bg-color);
+  border-radius: 4px;
+  margin: 0.1em;
+  max-height: 4em;
+  align-items: center;
+}
+.string-modifier > p, .number-modifier > p {
+  font-size: 28px;
+  color: black;
+  text-shadow: blueviolet;
+  padding-left: 4%;
+  min-width: 50%;
+}
+.string-modifier > label, .number-modifier > label {
+  align-content: center;
+  height: inherit;
+  width: auto;
+  min-width: 50%;
+  min-height: 80%;
+}
+.string-modifier > label > input {
+  height: 90%;
+  width: 100%;
+  min-width: auto;
+  min-height: inherit;
+  font-size: 1.1em;
+  text-align: center;
+  border-radius: 10px;
+}
+.number-modifier > label > input {
+  height: 90%;
+  width: 100%;
+  min-width: auto;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 10px;
+}
+
+
 .contacts {
   margin: none;
   padding: none;
