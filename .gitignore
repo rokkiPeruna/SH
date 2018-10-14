@@ -1,0 +1,4 @@
+tth_backend/__pycache__
+tth_backend/migrations/__pycache__
+dummyserver/*
+manage.py
