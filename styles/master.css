@@ -223,3 +223,14 @@ h1, h2, h3, h4, h5, h6, p, li {
   max-height: auto;
   border-radius: 8px; /* For rounded image */
 }
+
+.static-footer {
+  position: static;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 2em;
+  background-color: red;
+  color: white;
+  text-align: center;
+}

@@ -36,9 +36,9 @@ login_btn.click(function() {
   // Get value from game selector
   let game_val = $( "[name=gamesel]:checked" ).val();
   let dnd = "dnd";
-  let dnd_path = "dnd_index.html";
+  let dnd_path = "main.html";
   let shadowrun = "sh";
-  let shadowrun_path = "sh_index.html";
+  let shadowrun_path = "main.html";
 
   if ( game_val ) {
     console.log("game:" + game_val);
