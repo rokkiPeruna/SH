@@ -1,0 +1,1436 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "character"
+  ],
+  "properties": {
+    "character": {
+      "$id": "#/properties/character",
+      "type": "object",
+      "title": "The Character Schema",
+      "required": [
+        "Personal Data",
+        "Attributes",
+        "Skills",
+        "IDS/Lifestyles/Currency",
+        "Core Combat Info",
+        "Condition Monitor",
+        "Qualities",
+        "Contacts",
+        "Ranged Weapons",
+        "Melee Weapons",
+        "Armor",
+        "Cyber Deck",
+        "Augmentations",
+        "Vehicle",
+        "Gear",
+        "Spells / PreparationRituals / ComplexForms",
+        "Adept Powers Or Other Abilities"
+      ],
+      "properties": {
+        "Personal Data": {
+          "$id": "#/properties/character/properties/Personal Data",
+          "type": "object",
+          "title": "The Personal data Schema",
+          "required": [
+            "Name",
+            "Primary Alias",
+            "Metatype",
+            "Ethnicity",
+            "Age",
+            "Sex",
+            "Height",
+            "Weigth",
+            "Streed Cred",
+            "Notoriety",
+            "Public Awareness",
+            "Karma",
+            "Total Karma",
+            "Misc"
+          ],
+          "properties": {
+            "Name": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Name",
+              "type": "string",
+              "title": "The Name Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Primary Alias": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Primary Alias",
+              "type": "string",
+              "title": "The Primary alias Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Metatype": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Metatype",
+              "type": "string",
+              "title": "The Metatype Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Ethnicity": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Ethnicity",
+              "type": "string",
+              "title": "The Ethnicity Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Age": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Age",
+              "type": "integer",
+              "title": "The Age Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Sex": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Sex",
+              "type": "string",
+              "title": "The Sex Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Height": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Height",
+              "type": "integer",
+              "title": "The Height Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Weigth": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Weigth",
+              "type": "integer",
+              "title": "The Weigth Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Streed Cred": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Streed Cred",
+              "type": "integer",
+              "title": "The Streed cred Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Notoriety": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Notoriety",
+              "type": "string",
+              "title": "The Notoriety Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Public Awareness": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Public Awareness",
+              "type": "string",
+              "title": "The Public awareness Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Karma": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Karma",
+              "type": "string",
+              "title": "The Karma Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Total Karma": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Total Karma",
+              "type": "string",
+              "title": "The Total karma Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Misc": {
+              "$id": "#/properties/character/properties/Personal Data/properties/Misc",
+              "type": "string",
+              "title": "The Misc Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        },
+        "Attributes": {
+          "$id": "#/properties/character/properties/Attributes",
+          "type": "object",
+          "title": "The Attributes Schema",
+          "required": [
+            "Body",
+            "Agility",
+            "Reaction",
+            "Strength",
+            "Willpower",
+            "Logic",
+            "Intuition",
+            "Charisma",
+            "Edge",
+            "Edge points",
+            "Essence",
+            "Magic/Resonance",
+            "Initiative",
+            "Matrix initiative",
+            "Astral initiative",
+            "Composure",
+            "Judge intentions",
+            "Memory",
+            "Lift/carry",
+            "Movement",
+            "Physical limit",
+            "Mental limit",
+            "Social limit"
+          ],
+          "properties": {
+            "Body": {
+              "$id": "#/properties/character/properties/Attributes/properties/Body",
+              "type": "integer",
+              "title": "The Body Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Agility": {
+              "$id": "#/properties/character/properties/Attributes/properties/Agility",
+              "type": "integer",
+              "title": "The Agility Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Reaction": {
+              "$id": "#/properties/character/properties/Attributes/properties/Reaction",
+              "type": "integer",
+              "title": "The Reaction Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Strength": {
+              "$id": "#/properties/character/properties/Attributes/properties/Strength",
+              "type": "integer",
+              "title": "The Strength Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Willpower": {
+              "$id": "#/properties/character/properties/Attributes/properties/Willpower",
+              "type": "integer",
+              "title": "The Willpower Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Logic": {
+              "$id": "#/properties/character/properties/Attributes/properties/Logic",
+              "type": "integer",
+              "title": "The Logic Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Intuition": {
+              "$id": "#/properties/character/properties/Attributes/properties/Intuition",
+              "type": "integer",
+              "title": "The Intuition Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Charisma": {
+              "$id": "#/properties/character/properties/Attributes/properties/Charisma",
+              "type": "integer",
+              "title": "The Charisma Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Edge": {
+              "$id": "#/properties/character/properties/Attributes/properties/Edge",
+              "type": "integer",
+              "title": "The Edge Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Edge points": {
+              "$id": "#/properties/character/properties/Attributes/properties/Edge points",
+              "type": "integer",
+              "title": "The Edge points Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Essence": {
+              "$id": "#/properties/character/properties/Attributes/properties/Essence",
+              "type": "integer",
+              "title": "The Essence Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Magic/Resonance": {
+              "$id": "#/properties/character/properties/Attributes/properties/Magic/Resonance",
+              "type": "integer",
+              "title": "The Magic/resonance Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Initiative": {
+              "$id": "#/properties/character/properties/Attributes/properties/Initiative",
+              "type": "integer",
+              "title": "The Initiative Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Matrix initiative": {
+              "$id": "#/properties/character/properties/Attributes/properties/Matrix initiative",
+              "type": "integer",
+              "title": "The Matrix initiative Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Astral initiative": {
+              "$id": "#/properties/character/properties/Attributes/properties/Astral initiative",
+              "type": "integer",
+              "title": "The Astral initiative Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Composure": {
+              "$id": "#/properties/character/properties/Attributes/properties/Composure",
+              "type": "integer",
+              "title": "The Composure Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Judge intentions": {
+              "$id": "#/properties/character/properties/Attributes/properties/Judge intentions",
+              "type": "integer",
+              "title": "The Judge intentions Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Memory": {
+              "$id": "#/properties/character/properties/Attributes/properties/Memory",
+              "type": "integer",
+              "title": "The Memory Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Lift/carry": {
+              "$id": "#/properties/character/properties/Attributes/properties/Lift/carry",
+              "type": "integer",
+              "title": "The Lift/carry Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Movement": {
+              "$id": "#/properties/character/properties/Attributes/properties/Movement",
+              "type": "integer",
+              "title": "The Movement Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Physical limit": {
+              "$id": "#/properties/character/properties/Attributes/properties/Physical limit",
+              "type": "integer",
+              "title": "The Physical limit Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Mental limit": {
+              "$id": "#/properties/character/properties/Attributes/properties/Mental limit",
+              "type": "integer",
+              "title": "The Mental limit Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            },
+            "Social limit": {
+              "$id": "#/properties/character/properties/Attributes/properties/Social limit",
+              "type": "integer",
+              "title": "The Social limit Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            }
+          }
+        },
+        "Skills": {
+          "$id": "#/properties/character/properties/Skills",
+          "type": "array",
+          "title": "The Skills Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Skills/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Skill",
+              "RTG",
+              "Type"
+            ],
+            "properties": {
+              "Skill": {
+                "$id": "#/properties/character/properties/Skills/items/properties/Skill",
+                "type": "string",
+                "title": "The Skill Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "RTG": {
+                "$id": "#/properties/character/properties/Skills/items/properties/RTG",
+                "type": "integer",
+                "title": "The Rtg Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Type": {
+                "$id": "#/properties/character/properties/Skills/items/properties/Type",
+                "type": "string",
+                "title": "The Type Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "IDS/Lifestyles/Currency": {
+          "$id": "#/properties/character/properties/IDS/Lifestyles/Currency",
+          "type": "object",
+          "title": "The Ids/lifestyles/currency Schema",
+          "required": [
+            "PrimaryLifestyle",
+            "Nuyen",
+            "Licences",
+            "FakeIDs",
+            "RelatedLifestyles",
+            "Funds"
+          ],
+          "properties": {
+            "PrimaryLifestyle": {
+              "$id": "#/properties/character/properties/IDS/Lifestyles/Currency/properties/PrimaryLifestyle",
+              "type": "string",
+              "title": "The Primarylifestyle Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Nuyen": {
+              "$id": "#/properties/character/properties/IDS/Lifestyles/Currency/properties/Nuyen",
+              "type": "integer",
+              "title": "The Nuyen Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Licences": {
+              "$id": "#/properties/character/properties/IDS/Lifestyles/Currency/properties/Licences",
+              "type": "array",
+              "title": "The Licences Schema"
+            },
+            "FakeIDs": {
+              "$id": "#/properties/character/properties/IDS/Lifestyles/Currency/properties/FakeIDs",
+              "type": "array",
+              "title": "The Fakeids Schema"
+            },
+            "RelatedLifestyles": {
+              "$id": "#/properties/character/properties/IDS/Lifestyles/Currency/properties/RelatedLifestyles",
+              "type": "array",
+              "title": "The Relatedlifestyles Schema"
+            },
+            "Funds": {
+              "$id": "#/properties/character/properties/IDS/Lifestyles/Currency/properties/Funds",
+              "type": "array",
+              "title": "The Funds Schema"
+            }
+          }
+        },
+        "Core Combat Info": {
+          "$id": "#/properties/character/properties/Core Combat Info",
+          "type": "object",
+          "title": "The Core combat info Schema",
+          "required": [
+            "PrimaryArmor",
+            "PrimaryRangedWeapon",
+            "PrimaryMeleeWeapon"
+          ],
+          "properties": {
+            "PrimaryArmor": {
+              "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryArmor",
+              "type": "object",
+              "title": "The Primaryarmor Schema",
+              "required": [
+                "Name",
+                "Rating"
+              ],
+              "properties": {
+                "Name": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryArmor/properties/Name",
+                  "type": "string",
+                  "title": "The Name Schema",
+                  "default": "",
+                  "examples": [
+                    ""
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "Rating": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryArmor/properties/Rating",
+                  "type": "integer",
+                  "title": "The Rating Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                }
+              }
+            },
+            "PrimaryRangedWeapon": {
+              "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryRangedWeapon",
+              "type": "object",
+              "title": "The Primaryrangedweapon Schema",
+              "required": [
+                "Damage",
+                "Acc",
+                "AP",
+                "Mode",
+                "RC",
+                "Ammo"
+              ],
+              "properties": {
+                "Damage": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryRangedWeapon/properties/Damage",
+                  "type": "integer",
+                  "title": "The Damage Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                },
+                "Acc": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryRangedWeapon/properties/Acc",
+                  "type": "integer",
+                  "title": "The Acc Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                },
+                "AP": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryRangedWeapon/properties/AP",
+                  "type": "integer",
+                  "title": "The Ap Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                },
+                "Mode": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryRangedWeapon/properties/Mode",
+                  "type": "string",
+                  "title": "The Mode Schema",
+                  "default": "",
+                  "examples": [
+                    ""
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "RC": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryRangedWeapon/properties/RC",
+                  "type": "string",
+                  "title": "The Rc Schema",
+                  "default": "",
+                  "examples": [
+                    ""
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "Ammo": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryRangedWeapon/properties/Ammo",
+                  "type": "string",
+                  "title": "The Ammo Schema",
+                  "default": "",
+                  "examples": [
+                    ""
+                  ],
+                  "pattern": "^(.*)$"
+                }
+              }
+            },
+            "PrimaryMeleeWeapon": {
+              "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryMeleeWeapon",
+              "type": "object",
+              "title": "The Primarymeleeweapon Schema",
+              "required": [
+                "Reach",
+                "Damage",
+                "Acc",
+                "AP"
+              ],
+              "properties": {
+                "Reach": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryMeleeWeapon/properties/Reach",
+                  "type": "integer",
+                  "title": "The Reach Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                },
+                "Damage": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryMeleeWeapon/properties/Damage",
+                  "type": "integer",
+                  "title": "The Damage Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                },
+                "Acc": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryMeleeWeapon/properties/Acc",
+                  "type": "integer",
+                  "title": "The Acc Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                },
+                "AP": {
+                  "$id": "#/properties/character/properties/Core Combat Info/properties/PrimaryMeleeWeapon/properties/AP",
+                  "type": "integer",
+                  "title": "The Ap Schema",
+                  "default": 0,
+                  "examples": [
+                    0
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "Condition Monitor": {
+          "$id": "#/properties/character/properties/Condition Monitor",
+          "type": "object",
+          "title": "The Condition monitor Schema",
+          "required": [
+            "PhysicalDamageTrack",
+            "StunDamageTrack",
+            "Overflow"
+          ],
+          "properties": {
+            "PhysicalDamageTrack": {
+              "$id": "#/properties/character/properties/Condition Monitor/properties/PhysicalDamageTrack",
+              "type": "integer",
+              "title": "The Physicaldamagetrack Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "StunDamageTrack": {
+              "$id": "#/properties/character/properties/Condition Monitor/properties/StunDamageTrack",
+              "type": "integer",
+              "title": "The Stundamagetrack Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Overflow": {
+              "$id": "#/properties/character/properties/Condition Monitor/properties/Overflow",
+              "type": "integer",
+              "title": "The Overflow Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            }
+          }
+        },
+        "Qualities": {
+          "$id": "#/properties/character/properties/Qualities",
+          "type": "array",
+          "title": "The Qualities Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Qualities/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Name",
+              "Notes",
+              "Type"
+            ],
+            "properties": {
+              "Name": {
+                "$id": "#/properties/character/properties/Qualities/items/properties/Name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Notes": {
+                "$id": "#/properties/character/properties/Qualities/items/properties/Notes",
+                "type": "string",
+                "title": "The Notes Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Type": {
+                "$id": "#/properties/character/properties/Qualities/items/properties/Type",
+                "type": "string",
+                "title": "The Type Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "Contacts": {
+          "$id": "#/properties/character/properties/Contacts",
+          "type": "array",
+          "title": "The Contacts Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Contacts/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Name",
+              "Loyalty",
+              "Connection",
+              "Favor"
+            ],
+            "properties": {
+              "Name": {
+                "$id": "#/properties/character/properties/Contacts/items/properties/Name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Loyalty": {
+                "$id": "#/properties/character/properties/Contacts/items/properties/Loyalty",
+                "type": "integer",
+                "title": "The Loyalty Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Connection": {
+                "$id": "#/properties/character/properties/Contacts/items/properties/Connection",
+                "type": "string",
+                "title": "The Connection Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Favor": {
+                "$id": "#/properties/character/properties/Contacts/items/properties/Favor",
+                "type": "string",
+                "title": "The Favor Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "Ranged Weapons": {
+          "$id": "#/properties/character/properties/Ranged Weapons",
+          "type": "array",
+          "title": "The Ranged weapons Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Ranged Weapons/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Weapon",
+              "Damage",
+              "Acc",
+              "AP",
+              "Mode",
+              "RC",
+              "Ammo"
+            ],
+            "properties": {
+              "Weapon": {
+                "$id": "#/properties/character/properties/Ranged Weapons/items/properties/Weapon",
+                "type": "string",
+                "title": "The Weapon Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Damage": {
+                "$id": "#/properties/character/properties/Ranged Weapons/items/properties/Damage",
+                "type": "integer",
+                "title": "The Damage Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Acc": {
+                "$id": "#/properties/character/properties/Ranged Weapons/items/properties/Acc",
+                "type": "integer",
+                "title": "The Acc Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "AP": {
+                "$id": "#/properties/character/properties/Ranged Weapons/items/properties/AP",
+                "type": "integer",
+                "title": "The Ap Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Mode": {
+                "$id": "#/properties/character/properties/Ranged Weapons/items/properties/Mode",
+                "type": "integer",
+                "title": "The Mode Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "RC": {
+                "$id": "#/properties/character/properties/Ranged Weapons/items/properties/RC",
+                "type": "integer",
+                "title": "The Rc Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Ammo": {
+                "$id": "#/properties/character/properties/Ranged Weapons/items/properties/Ammo",
+                "type": "string",
+                "title": "The Ammo Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "Melee Weapons": {
+          "$id": "#/properties/character/properties/Melee Weapons",
+          "type": "array",
+          "title": "The Melee weapons Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Melee Weapons/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Weapon",
+              "Reach",
+              "Damage",
+              "Acc",
+              "AP"
+            ],
+            "properties": {
+              "Weapon": {
+                "$id": "#/properties/character/properties/Melee Weapons/items/properties/Weapon",
+                "type": "string",
+                "title": "The Weapon Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Reach": {
+                "$id": "#/properties/character/properties/Melee Weapons/items/properties/Reach",
+                "type": "integer",
+                "title": "The Reach Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Damage": {
+                "$id": "#/properties/character/properties/Melee Weapons/items/properties/Damage",
+                "type": "integer",
+                "title": "The Damage Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Acc": {
+                "$id": "#/properties/character/properties/Melee Weapons/items/properties/Acc",
+                "type": "integer",
+                "title": "The Acc Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "AP": {
+                "$id": "#/properties/character/properties/Melee Weapons/items/properties/AP",
+                "type": "integer",
+                "title": "The Ap Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              }
+            }
+          }
+        },
+        "Armor": {
+          "$id": "#/properties/character/properties/Armor",
+          "type": "array",
+          "title": "The Armor Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Armor/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Armor",
+              "Rating",
+              "Notes"
+            ],
+            "properties": {
+              "Armor": {
+                "$id": "#/properties/character/properties/Armor/items/properties/Armor",
+                "type": "string",
+                "title": "The Armor Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Rating": {
+                "$id": "#/properties/character/properties/Armor/items/properties/Rating",
+                "type": "integer",
+                "title": "The Rating Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Notes": {
+                "$id": "#/properties/character/properties/Armor/items/properties/Notes",
+                "type": "string",
+                "title": "The Notes Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "Cyber Deck": {
+          "$id": "#/properties/character/properties/Cyber Deck",
+          "type": "object",
+          "title": "The Cyber deck Schema",
+          "required": [
+            "Model",
+            "Attack",
+            "Sleaze",
+            "DeviceRating",
+            "DataProcessing",
+            "Firewall",
+            "Programs",
+            "MatrixConditionMonitor"
+          ],
+          "properties": {
+            "Model": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/Model",
+              "type": "string",
+              "title": "The Model Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Attack": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/Attack",
+              "type": "string",
+              "title": "The Attack Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "Sleaze": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/Sleaze",
+              "type": "string",
+              "title": "The Sleaze Schema",
+              "default": "",
+              "examples": [
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "DeviceRating": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/DeviceRating",
+              "type": "integer",
+              "title": "The Devicerating Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "DataProcessing": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/DataProcessing",
+              "type": "integer",
+              "title": "The Dataprocessing Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Firewall": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/Firewall",
+              "type": "integer",
+              "title": "The Firewall Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            },
+            "Programs": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/Programs",
+              "type": "array",
+              "title": "The Programs Schema"
+            },
+            "MatrixConditionMonitor": {
+              "$id": "#/properties/character/properties/Cyber Deck/properties/MatrixConditionMonitor",
+              "type": "integer",
+              "title": "The Matrixconditionmonitor Schema",
+              "default": 0,
+              "examples": [
+                0
+              ]
+            }
+          }
+        },
+        "Augmentations": {
+          "$id": "#/properties/character/properties/Augmentations",
+          "type": "array",
+          "title": "The Augmentations Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Augmentations/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Augmentation",
+              "Rating",
+              "Notes",
+              "Essence"
+            ],
+            "properties": {
+              "Augmentation": {
+                "$id": "#/properties/character/properties/Augmentations/items/properties/Augmentation",
+                "type": "string",
+                "title": "The Augmentation Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Rating": {
+                "$id": "#/properties/character/properties/Augmentations/items/properties/Rating",
+                "type": "integer",
+                "title": "The Rating Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Notes": {
+                "$id": "#/properties/character/properties/Augmentations/items/properties/Notes",
+                "type": "string",
+                "title": "The Notes Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Essence": {
+                "$id": "#/properties/character/properties/Augmentations/items/properties/Essence",
+                "type": "integer",
+                "title": "The Essence Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              }
+            }
+          }
+        },
+        "Vehicle": {
+          "$id": "#/properties/character/properties/Vehicle",
+          "type": "array",
+          "title": "The Vehicle Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Vehicle/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Name",
+              "Handling",
+              "Acceleration",
+              "Speed",
+              "Pilot",
+              "Body",
+              "Armor",
+              "Sensor",
+              "Notes"
+            ],
+            "properties": {
+              "Name": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Handling": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Handling",
+                "type": "integer",
+                "title": "The Handling Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Acceleration": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Acceleration",
+                "type": "integer",
+                "title": "The Acceleration Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Speed": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Speed",
+                "type": "integer",
+                "title": "The Speed Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Pilot": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Pilot",
+                "type": "integer",
+                "title": "The Pilot Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Body": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Body",
+                "type": "integer",
+                "title": "The Body Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Armor": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Armor",
+                "type": "integer",
+                "title": "The Armor Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Sensor": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Sensor",
+                "type": "integer",
+                "title": "The Sensor Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Notes": {
+                "$id": "#/properties/character/properties/Vehicle/items/properties/Notes",
+                "type": "string",
+                "title": "The Notes Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        },
+        "Gear": {
+          "$id": "#/properties/character/properties/Gear",
+          "type": "array",
+          "title": "The Gear Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Gear/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Item",
+              "Rating"
+            ],
+            "properties": {
+              "Item": {
+                "$id": "#/properties/character/properties/Gear/items/properties/Item",
+                "type": "string",
+                "title": "The Item Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Rating": {
+                "$id": "#/properties/character/properties/Gear/items/properties/Rating",
+                "type": "integer",
+                "title": "The Rating Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              }
+            }
+          }
+        },
+        "Spells / PreparationRituals / ComplexForms": {
+          "$id": "#/properties/character/properties/Spells / PreparationRituals / ComplexForms",
+          "type": "array",
+          "title": "The Spells / preparationrituals / complexforms Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Spells / PreparationRituals / ComplexForms/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "S/P/R/CF",
+              "Type/Target",
+              "Range",
+              "Duration",
+              "Drain"
+            ],
+            "properties": {
+              "S/P/R/CF": {
+                "$id": "#/properties/character/properties/Spells / PreparationRituals / ComplexForms/items/properties/S/P/R/CF",
+                "type": "string",
+                "title": "The S/p/r/cf Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Type/Target": {
+                "$id": "#/properties/character/properties/Spells / PreparationRituals / ComplexForms/items/properties/Type/Target",
+                "type": "string",
+                "title": "The Type/target Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Range": {
+                "$id": "#/properties/character/properties/Spells / PreparationRituals / ComplexForms/items/properties/Range",
+                "type": "integer",
+                "title": "The Range Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Duration": {
+                "$id": "#/properties/character/properties/Spells / PreparationRituals / ComplexForms/items/properties/Duration",
+                "type": "integer",
+                "title": "The Duration Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Drain": {
+                "$id": "#/properties/character/properties/Spells / PreparationRituals / ComplexForms/items/properties/Drain",
+                "type": "integer",
+                "title": "The Drain Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              }
+            }
+          }
+        },
+        "Adept Powers Or Other Abilities": {
+          "$id": "#/properties/character/properties/Adept Powers Or Other Abilities",
+          "type": "array",
+          "title": "The Adept powers or other abilities Schema",
+          "items": {
+            "$id": "#/properties/character/properties/Adept Powers Or Other Abilities/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "Name",
+              "Rating",
+              "Notes"
+            ],
+            "properties": {
+              "Name": {
+                "$id": "#/properties/character/properties/Adept Powers Or Other Abilities/items/properties/Name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              },
+              "Rating": {
+                "$id": "#/properties/character/properties/Adept Powers Or Other Abilities/items/properties/Rating",
+                "type": "integer",
+                "title": "The Rating Schema",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "Notes": {
+                "$id": "#/properties/character/properties/Adept Powers Or Other Abilities/items/properties/Notes",
+                "type": "string",
+                "title": "The Notes Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

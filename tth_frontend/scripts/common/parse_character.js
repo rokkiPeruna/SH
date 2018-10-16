@@ -7,7 +7,7 @@ jQuery( document ).ready( function() {
 // Create character info from JSON loaded from server
 $.ajax({
   dataType: "json",
-  url: "game_data/character_template.json",
+  url: "game_data/sh_character_template.schema.json",
   mimeType: "application/json"
 })
 .done( function( data ) {

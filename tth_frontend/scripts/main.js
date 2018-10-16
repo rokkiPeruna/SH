@@ -4,6 +4,7 @@
 
 jQuery( document ).ready(function() {
 
+
 //----------------------------------------------------
 // Fetch user's on-going games and show them
 //----------------------------------------------------

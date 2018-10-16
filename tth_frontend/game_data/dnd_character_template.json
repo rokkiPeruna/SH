@@ -1,0 +1,162 @@
+{
+	"file_name": "dnd_character_template.json",
+	"data": "character",
+	"data_type": "object",
+	"character": {
+		"PersonalData": {
+			"Name": "",
+			"PlayerName": "",
+			"Class": "",
+			"Level": 1,
+			"Race": "",
+			"Alignment": "",
+			"EXP": 0,
+			"Looks": {
+				"Age": 0,
+				"Height": 0,
+				"Weight": 0,
+				"Eyes": "",
+				"Skin": "",
+				"Hair": "",
+				"Size": ""
+			}
+		},
+		"Armor&Speed": {
+			"Speed": 0,
+			"Initiative": 0,
+			"ArmorClass": {
+				"ArmorValue": 0,
+				"Base": 0,
+				"DexterityModifier": 0,
+				"Armor": 0,
+				"Shield": 0,
+				"Misc": 0
+			}
+		},
+		"Health": {
+			"HitPointMaximum": 0,
+			"CurrentHitPoints": 0,
+			"HitDice": "",
+			"DeathSaves": {
+				"Successes": 0,
+				"Failures": 0
+			}
+		},
+		"SpellInfo": {
+			"SpellcastingAbility": 0,
+			"SpellSaveDC": 0,
+			"SpellAttackBonus": 0
+		},
+		"Attributes": {
+			"ProfiencyBonus": 0,
+			"Inspiration": 0,
+			"Strength": {
+				"Base": 0,
+				"Mod": 0,
+				"SavingThrows": false,
+				"Athletics": false,
+				"Doubles": []
+			},
+			"Dexterity": {
+				"Base": 0,
+				"Mod": 0,
+				"SavingThrows": false,
+				"Acrobatics": false,
+				"SleightOfHand": false,
+				"Stealth": false,
+				"Doubles": []
+			},
+			"Constitution": {
+				"Base": 0,
+				"Mod": 0,
+				"SavingThrows": false
+			},
+			"Intelligence": {
+				"Base": 0,
+				"Mod": 0,
+				"SavingThrows": false,
+				"Arcana": false,
+				"History": false,
+				"Investigation": false,
+				"Nature": false,
+				"Religion": false,
+				"Doubles": []
+			},
+			"Wisdom": {
+				"Base": 0,
+				"Mod": 0,
+				"SavingThrows": false,
+				"AnimalHandling": false,
+				"Insight": false,
+				"Medicine": false,
+				"Perception": false,
+				"Survival": false,
+				"Doubles": []
+			},
+			"Charisma": {
+				"Base": 0,
+				"Mod": 0,
+				"SavingThrows": false,
+				"Deception": false,
+				"Intimidation": false,
+				"Performance": false,
+				"Persuasion": false,
+				"Doubles": []
+			},
+			"PassiveWisdow(perception)": 0
+		},
+		"Weapons": [{
+			"Weapon": "",
+			"Type": "",
+			"Range": 0,
+			"AttackBonus": 0,
+			"Damage": 0,
+			"Misc": ""
+		}],
+		"AccessibleItems": [{
+			"Item": "",
+			"Units": 0,
+			"Description": ""
+		}],
+		"Feats": [{
+			"Feat": "",
+			"Description": ""
+		}],
+		"Currency": {
+			"Copper": 0,
+			"Silver": 0,
+			"Gold": 0,
+			"Platinum": 0,
+			"Loans": [{
+				"ToWhom": "",
+				"Amount": 0,
+				"Unit": 0
+			}]
+		},
+		"Features": [{
+			"Feature": "",
+			"Description": ""
+		}],
+		"Mindset": {
+			"PersonalityTraits": [],
+			"Ideals": [],
+			"Bonds": [],
+			"Flaws": []
+		},
+		"Appearance": "",
+		"Background": "",
+		"Backstory": "",
+		"Allies&Organizations": [{
+			"AllyOrOrganization": "",
+			"Description": ""
+		}],
+		"OtherProficiencies&Languages": [{
+			"ProficiencyOrLanguage": "",
+			"Description": ""
+		}],
+		"StowedItems": [{
+			"Item": "",
+			"Description": ""
+		}]
+	}
+}

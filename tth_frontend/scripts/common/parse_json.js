@@ -39,10 +39,40 @@ jQuery( document ).ready( function() {
 // Create character info from JSON loaded from server
 $.ajax({
   dataType: "json",
-  url: "game_data/character_template.json",
+  url: "game_data/sh_character_template.schema.json",
   mimeType: "application/json"
 })
 .done( function( data ) {
+
+  //NOTE: TESTING
+  var element = document.getElementById( "json-editor-placeholder" );
+  var editor = new JSONEditor( element, {
+    ajax:                     true,
+    disable_array_add:        true,
+    disable_array_delete:     true,
+    disable_array_reorder:    true,
+    disable_collapse:         true,
+    disable_edit_json:        true,
+    disable_properties:       true,
+    array_controls_top:       true,
+    form_name_root:           "val-form-",
+    iconlib:                  null,
+    no_additional_properties: false,
+    refs:                     {},
+    required_by_default:      false,
+    keep_oneof_values:        true,
+    schema:                   {},
+    show_errors:              "interactions",
+    startval:                 null,
+    // template:                 default,
+    theme:                    "html",
+    display_required_only:    false,
+    prompt_before_delete:     true
+  });
+  JSONEditor.defaults.options.object_layout = "grid";
+  editor.setValue(data[data.data]);
+
+
   console.log("Read character file " + data.file_name);
   console.log("File data: " + data[data.data]);
 
