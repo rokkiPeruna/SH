@@ -1,63 +1,60 @@
 // All index (login) page scripts
 "use strict"
 
-jQuery( document ).ready(function() {
-
-
-
-
 //---------------------------------------------
 // About -modal
 //---------------------------------------------
-
-// Get the modal
-var modal = $( "#about-modal" );
-// Get the button that opens the modal
-var btn = $( "#upper-menu-about-btn" );
-// When the user clicks on the button, open the modal
-btn.click(function() {
-  if (modal.css("display") == "none") {
-    modal.css("display", "block");
-  }
-  else {
-    modal.css("display", "none");
-  }
-});
-// When the user clicks on the modal, close the it
-modal.click(function() {
-  if (modal.css("display") != "none") {
-    modal.css("display", "none");
-  }
-});
-
-//---------------------------------------------
-// Login
-//---------------------------------------------
-let login_btn = $( "#index-login-btn" );
-login_btn.click(function() {
-  // Get value from game selector
-  let game_val = $( "[name=gamesel]:checked" ).val();
-  let dnd = "dnd";
-  let dnd_path = "main.html";
-  let shadowrun = "sh";
-  let shadowrun_path = "main.html";
-
-  if ( game_val ) {
-    console.log("game:" + game_val);
-    if ( game_val == dnd ) {
-      window.location = dnd_path;
+new Vue({
+  // Owner
+  el: '#app-container',
+  // Instance variables
+  data: {
+    menu_title: "ABOUT",
+    show_modal: false,
+    user_name: "",
+    password: "",
+    remember_me: true,
+    rm_storage_id: "index_remember_me",
+    dummy_image_src:""
+  },
+  // Methods bound to events (or something else)
+  methods: {
+    showModal() {
+      this.show_modal = !this.show_modal;
+      if ( this.show_modal ) this.menu_title = "CLOSE";
+      else this.menu_title = "ABOUT";
+      console.debug("Show modal: " + this.show_modal);
+    },
+    tryLogin( ) {
+      console.debug("Trying to log...");
+      if ( this.remember_me ) {
+        localStorage.setItem( this.rm_storage_id, this.user_name );
+      }
+      else { //Remove from localStorage
+        localStorage.removeItem( this.rm_storage_id );
+      }
+      // Post username and password to server
+      var request = new Request("images/helgawuolikoski.jpg", {
+        method: "get"
+      });
+      var sucee = false;
+      fetch( request ).then(function(response) {
+        sucee = true;
+      }).catch(function(err) {
+        alert("Wrong password: " + err);
+      });
+      this.dummy_image_src = "images/helgawuolikoski.jpg";
     }
-    else if ( game_val == shadowrun ) {
-      window.location = shadowrun_path;
+  },
+  // When instance is created
+  mounted: function() {
+    let rm = localStorage.getItem( this.rm_storage_id );
+    if ( typeof rm !== undefined ) {
+      this.user_name = rm;
     }
     else {
-      console.log("Unknown gametype: " + game_val );
+      this.user_name = null;
     }
   }
-  else {
-    // TODO: Modal pop instead!
-    alert("No game chosen!");
-  }
-});
 
-}); // end jQuery( document ).ready
+}); // Vue #app-container

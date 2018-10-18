@@ -53,9 +53,9 @@ class AppUser(models.Model):
 
 
 ######################################################################
-# SessionParticipant represents the game campaign's player or a master
+# CampaignParticipant represents the game campaign's player or a master
 ######################################################################
-class SessionParticipant(models.Model):
+class CampaignParticipant(models.Model):
   name = models.CharField(max_length=100)
   # Role: either player or game master (or spectator)
   PLAYER = "PL"
@@ -92,7 +92,7 @@ class SessionParticipant(models.Model):
 class Character(models.Model):
   name = models.CharField(max_length=100)
   # Each normal character is bound to single campaign participant
-  participant = models.ForeignKey(SessionParticipant)
+  participant = models.ForeignKey(CampaignParticipant)
   # Character's data sheet as JSON
   datasheet = models.TextField(max_length=DATASHEET_MAX_LENGTH)
   # Created

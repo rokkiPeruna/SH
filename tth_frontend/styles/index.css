@@ -16,7 +16,7 @@
   --main-upper-menu-btn-hover-color: #ffffff;
 
   --main-button-color: #adcbe3;
-  --main-button-hover-color: #e7eff6;
+  --main-button-hover-color: #5ede95;
   --common-text-shadow-attr: 0px 0px 1px #63ace5;
   --common-font-size: 20px;
   --common--button-font-size: 22px;
@@ -75,7 +75,7 @@ body {
 
   /* Top padding added so that fixed header won't cover stuff. Should be atleast
   as much as 'upper-menu's height */
-  padding-top: 4em;
+  padding-top: 8em;
 
   /* As html and body element are same size, 'app-container' should be seen (from
   visual perspective) as 'the' body */
@@ -165,7 +165,7 @@ input {
 }
 
 .modal {
-  display: none; /* Hidden by default */
+  display: block; /* Hidden by default */
   position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -198,42 +198,6 @@ input {
 
 
 
-
-/* Game selector */
-.game-selector {
-  display: flex;
-  flex-flow: wrap;
-  text-align: center;
-  align-content: center;
-  margin: 1em;
-  padding: 1em;
-}
-
-.game-selector label {
-  flex-grow: 1;
-  margin: 0.5em;
-  width: 3.5em;
-  min-height: 4em;
-  border-radius: 8px;
-  transition: all 0.3s;
-}
-.game-selector input[type="radio"]{
-  display: none;
-  padding: 1em;
-  border-radius: 8px;
-}
-.game-selector input[type=radio]:not(checked) + label {
-  padding: 1em;
-  border: 0.2em solid #8f9799;
-  background-color: #767a;
-}
-.game-selector input[type="radio"]:checked + label {
-  color: black;
-  padding-top: 1em;
-  background-color: #04f263;
-  border: 0.2em solid #8f9799;
-}
-
 /* Login form */
 input[type=text], input[type=password] {
   width: 100%;
@@ -259,3 +223,15 @@ input[type=text], input[type=password] {
   padding: 1em 1em;
   border-radius: 8px; /* For rounded button */
 }
+
+.login-form > button:hover {
+  background-color: var(--main-button-hover-color);
+}
+
+
+
+
+
+
+
+/* End here for web browser's style editor scroll */
