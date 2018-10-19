@@ -75,7 +75,7 @@ body {
 
   /* Top padding added so that fixed header won't cover stuff. Should be atleast
   as much as 'upper-menu's height */
-  padding-top: 8em;
+  padding-top: 5em;
 
   /* As html and body element are same size, 'app-container' should be seen (from
   visual perspective) as 'the' body */
@@ -105,7 +105,6 @@ input {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
   font-kerning: auto;
   font-size: 20px;
   text-shadow: var(--common-text-shadow-attr);
@@ -142,7 +141,7 @@ input {
   font-size: var(--common--button-font-size);
   text-shadow: var(--common-text-shadow-attr);
   border: none;
-  border-right: : 0.1em solid #63ace5;
+  border-right: 0.1em solid #63ace5;
   background-color: var(--main-upper-menu-btn-color);
   width: 5em;
   /* padding: 0.1em 0.1em; */
@@ -197,6 +196,11 @@ input {
 }
 
 
+.highlighted {
+  font-size: 1.3em;
+  text-align: center;
+  background-color: #119bba;
+}
 
 /* Login form */
 input[type=text], input[type=password] {
@@ -227,6 +231,8 @@ input[type=text], input[type=password] {
 .login-form > button:hover {
   background-color: var(--main-button-hover-color);
 }
+
+
 
 
 

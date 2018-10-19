@@ -7,14 +7,15 @@ Main HTML is the home for the application after successful login.
   <head>
     <meta charset="utf-8">
     <title> Horny people near you! </title>
-    <link rel="stylesheet" href="styles/sh_theme_colors.css" type="text/css">
-    <link rel="stylesheet" href="styles/master.css" type="text/css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/sh_theme_colors.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'styles/master.css' %}" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/jsoneditor.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/common/upper_menu.js"></script>
-    <script src="scripts/common/parse_json.js"></script>
+    <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'js/jsoneditor.js' %}"></script>
+    <script src="{% static 'scripts/main.js' %}"></script>
+    <script src="{% static 'scripts/common/upper_menu.js' %}"></script>
+    <script src="{% static 'scripts/common/parse_json.js' %}"></script>
     <!-- <script src="scripts/sh/contacts.js"></script> -->
   </head>
 
@@ -43,11 +44,19 @@ Main HTML is the home for the application after successful login.
 
         </div>
       </div>
+
       <!-- ..join game or.. -->
       <div class="basic-list-view" id="main-join-game">
-        <p>SCRIPTS NOT LOADED, NOT FUNCTIONAL!</p>
-        <p>Join game</p>
+        <h2>Join game</h2>
+        {% if campaigns %}
+          <ul>
+          {% for campaign in campaigns %}
+            <li> <a href="campaign/{{campain.}}">{{campaign.name}}</a> </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
+
       <!-- ..create a new game! -->
       <div class="create-new-game" id="main-create-game">
         <p>SCRIPTS NOT LOADED, NOT FUNCTIONAL!</p>

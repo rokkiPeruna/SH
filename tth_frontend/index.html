@@ -3,63 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title> Horny people near you! </title>
-    <link rel="stylesheet" href="styles/index.css" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/jquery-3.3.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
-
   <body>
-
-    <div id="app-container">
-      <!-- Upper menu -->
-      <div class="upper-menu">
-        <button v-on:click="showModal" type="button" id="upper-menu-about-btn">{{menu_title}}</button>
-      </div>
-      <!-- Pop-up shown when 'About' is clicked -->
-      <div class="modal" id="about-modal" v-show="show_modal">
-        <!-- Code for popppppping in 'index.js' -->
-        <div class="modal-content" id="about-content" v-on:click="showModal">
-            <p class="modal-text">
-            Application meant for players and gamemasters
-            of great tabletop RPGs. Choose game, sign in with your username
-            and password and enjoy!
-            </p>
-            <hr>
-            <p class="modal-text">
-            Ideas for creating a better experience can be forwarded to your's
-            truly, the poor man's one punch man.
-            </p>
-            <img src="images/verypoormansonepunchman.jpg" alt="verypoormansonepunchman">
-        </div>
-      </div>
-      <!-- Login logic -->
-      <div class="login-form">
-
-        <label for="user-name"><b>Username</b></label>
-        <input type="text" placeholder="Username" v-bind:value="user_name"  name="user-name" v-on:change="user_name = $event.target.value" required>
-
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" v-on:input="password = $event.target.value" required>
-
-        <button type="submit" id="index-login-btn" v-on:click="tryLogin">Login</button>
-        <!-- If checked, user name is stored to localStorage -->
-        <label>
-          <input type="checkbox" v-model="remember_me" name="remember"> Remember me
-        </label>
-
-      </div>
-
-      <div>
-        <!-- Successful request fills this with image -->
-        <p>mitti</p>
-        <img v-bind:src="dummy_image_src" alt="If u see tis, vituiks män">
-      </div>
-
-    </div>
-
-      <!-- Include scripts here -->
-      <script src="scripts/index.js"></script>
+    <h1>If you are seeing this, then something has gone wrong. Something can be anything and probably is.</h1>
   </body>
-
 </html>

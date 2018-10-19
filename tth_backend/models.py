@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # How large character datasheet can get
 DATASHEET_MAX_LENGTH = 65535 #64 kB, should be enough for normal writers
@@ -23,7 +24,9 @@ DATASHEET_MAX_LENGTH = 65535 #64 kB, should be enough for normal writers
 ######################################################################
 class Campaign(models.Model):
   name = models.CharField(max_length=100)   # Story/campaign name
-  passwd = models.CharField(max_length=100) # For joining the campaign
+  gmpassword = models.CharField(max_length=100) # For joining as game master
+  playerpassword = models.CharField(max_length=100) # For joining as player
+
 
   # Story ?
   # Maps ?
@@ -34,14 +37,19 @@ class Campaign(models.Model):
   def __str__(self):
     return self.name
 
+  def get_campaigns(self):
+    return Campaign.object.all()
+
 ######################################################################
 # AppUser represents application user. Application user can join many
 # game campaigns, be either game master or player in those campaigns and
 # have several different characters.
 ######################################################################
 class AppUser(models.Model):
-  name = models.CharField(max_length=30)  # Actual human name
-  alias = models.CharField(max_length=30) # Human's nickname
+  # This model extends the User model which is user for authentication
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  # App users can join many campaigns and campaigns can have many user
+  mycampaigns = models.ManyToManyField(Campaign)
   # Created
   created = models.DateField(auto_now_add=True)
   # Last saved
@@ -92,7 +100,7 @@ class CampaignParticipant(models.Model):
 class Character(models.Model):
   name = models.CharField(max_length=100)
   # Each normal character is bound to single campaign participant
-  participant = models.ForeignKey(CampaignParticipant)
+  participant = models.ForeignKey(CampaignParticipant, on_delete=models.CASCADE)
   # Character's data sheet as JSON
   datasheet = models.TextField(max_length=DATASHEET_MAX_LENGTH)
   # Created
