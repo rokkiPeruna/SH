@@ -1,5 +1,11 @@
 "use strict"
 
+var main_menu = new Vue({
+
+
+}); // end main_menu Vue
+
+
 jQuery( document ).ready(function() {
 
 //Add callbacks to buttons

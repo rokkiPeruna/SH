@@ -2,9 +2,6 @@
 
 // Contains logic for continuing, joining and creating games
 
-jQuery( document ).ready(function() {
-
-
 //----------------------------------------------------
 // Fetch user's on-going games and show them
 //----------------------------------------------------
@@ -19,7 +16,3 @@ jQuery( document ).ready(function() {
 //----------------------------------------------------
 // Create new game from input
 //----------------------------------------------------
-
-
-
-}); // end jQuery( document ).ready

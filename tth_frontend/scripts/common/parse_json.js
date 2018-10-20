@@ -145,7 +145,7 @@ $.ajax({
     undefined); // Top level keys handle their HTML attachment
 })
 .fail( function() {
-  alert("Failed to load character!");
+  console.error("Failed to load character!");
 });
 
 });// end jQuery( document ).ready

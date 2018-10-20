@@ -26,19 +26,14 @@ class Campaign(models.Model):
   name = models.CharField(max_length=100)   # Story/campaign name
   gmpassword = models.CharField(max_length=100) # For joining as game master
   playerpassword = models.CharField(max_length=100) # For joining as player
-
-
+  shortdescription = models.CharField(max_length=150)
   # Story ?
   # Maps ?
   # Simple character store ?
   # More ... ?
-
-
   def __str__(self):
     return self.name
 
-  def get_campaigns(self):
-    return Campaign.object.all()
 
 ######################################################################
 # AppUser represents application user. Application user can join many

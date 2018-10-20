@@ -11,14 +11,19 @@ from .models import Campaign
 # Login view is from Django, login.html is in root/registration/login.html
 ######################################################################
 def index(request):
-  return HttpResponseRedirect("login")
+  return HttpResponseRedirect("accounts/login")
+
+
+# # # # # # # # # # # # # #
+# LOBBY PAGE FUNCTIONALITY
+# # # # # # # # # # # # # #
 
 
 ######################################################################
-# After successful login main page awaits
+# After successful login, the lobby awaits
 ######################################################################
 @login_required
-def main_view(request):
+def lobby_view(request):
   response = {
     "campaigns": Campaign.objects.all()
   }
@@ -56,6 +61,13 @@ def update_user_data(request):
 ######################################################################
 @login_required
 def create_campaign(request):
+  if request.method == "POST":
+    # Check that all necessary data is present
+    name = request.POST.get("new-camp-name")
+    pl_pw = request.POST.get("new-camp-pw")
+    gm_pw = request.POST.get("new-camp-gmpw")
+    sdesc = request.POST.get("name")
+
   pass
 
 
@@ -71,4 +83,25 @@ def join_campaign(request):
 ######################################################################
 @login_required
 def continue_campaign(request):
+  pass
+
+
+# # # # # # # # # # # # # # # #
+# CAMPAIGN PAGE FUNCTIONALITY
+# # # # # # # # # # # # # # # #
+
+# TODO: Ensure that only campaign's players can see these views
+
+######################################################################
+# Campaign data, URL: 'campaign/#name'
+######################################################################
+def campaign_data(request, campaign_name):
+  pass
+
+
+######################################################################
+# Campaign character(s). Regular player see her/his character and
+# public NPCs, gamemaster sees everything
+######################################################################
+def character_data(request, character_name):
   pass

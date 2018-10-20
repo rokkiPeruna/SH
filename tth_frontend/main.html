@@ -14,36 +14,47 @@ Main HTML is the home for the application after successful login.
     <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
     <script src="{% static 'js/jsoneditor.js' %}"></script>
     <script src="{% static 'scripts/main.js' %}"></script>
-    <script src="{% static 'scripts/common/upper_menu.js' %}"></script>
+    <script src="{% static 'scripts/common/main_menu.js' %}"></script>
     <script src="{% static 'scripts/common/parse_json.js' %}"></script>
     <!-- <script src="scripts/sh/contacts.js"></script> -->
   </head>
 
   <body>
+
     <!-- Upper menu's basic content. Buttons may be added or removed
     depending on the state. -->
+    {% block menubar %}
+    <!-- This div works as a fallback and a reminder of basic upper -->
     <div class="upper-menu">
+    <p> <i>fallback value, error in templates</i> </p>
+    </div>
+    {% endblock %}
+
       <button type="button" id="upper-menu-menu-icon">
         <i class="material-icons">menu</i>
       </button>
-      <button type="button" id="upper-menu-home-btn">HOME</button>
+      <button type="button" id="upper-menu-home-btn">CREATE</button>
       <button type="button" id="upper-menu-character-btn">CHARACTER</button>
       <button type="button" id="upper-menu-contacts-btn">CONTACTS</button>
-    </div>
 
     <!-- Contains main functionality. Each state modifies this section.
          Initial state is user's available game list and game creator. -->
     <div id="app-container">
 
+      <div class="home">
+          Application meant for players and gamemasters of Shadowrun tabletop.
+          <br>Work in progress, but desired features are as follows:
+      </div>
+
+      <hr>
+
       <!-- Continue on-going game or.. -->
       <div class="basic-list-view" id="main-continue-game">
-        <p>SCRIPTS NOT LOADED, NOT FUNCTIONAL!</p>
         <p>Continue on-going game</p>
-        <p>Showing JsonEditor functionality:::::!</p>
-        <div id="json-editor-placeholder">
 
-        </div>
       </div>
+
+      <hr>
 
       <!-- ..join game or.. -->
       <div class="basic-list-view" id="main-join-game">
@@ -51,32 +62,48 @@ Main HTML is the home for the application after successful login.
         {% if campaigns %}
           <ul>
           {% for campaign in campaigns %}
-            <li> <a href="campaign/{{campain.}}">{{campaign.name}}</a> </li>
+            <li> <a href="campaign/{{campain.name}}">{{campaign.name}}</a> </li>
           {% endfor %}
         </ul>
         {% endif %}
       </div>
 
+      <hr>
+
       <!-- ..create a new game! -->
-      <div class="create-new-game" id="main-create-game">
-        <p>SCRIPTS NOT LOADED, NOT FUNCTIONAL!</p>
-        <p>Create new game</p>
+      <div class="create-campaign" id="main-create-campaign">
+        <p>Create a new game</p>
+        <form action="create_campaign" method="post">
+          {% csrf_token %}
+          <p>
+            Campaign name. Players will find your campaign using this.
+            <input type="text" name="new-camp-name" placeholder="Campaign name" required>
+          </p>
+          <p>
+            Campaign password. Player will be able to join with this.
+            <input type="password" name="new-camp-pw" placeholder="Campaign password" required>
+          </p>
+          <p>
+            Confirm campaign password.
+            <input type="password" name="new-camp-confpw" placeholder="Confirm password" required>
+          </p>
+          <p>
+            Gamemaster password. Used for joining as gamemaster. You will be automatically added as a gamemaster so forgetting this doesn't prevent you from playing.
+            <input type="password" name="new-camp-gmpw" placeholder="Gamemaster password" required>
+          </p>
+          <p>
+            Confirm the gamemaster password.
+            <input type="password" name="new-camp-gmcpw" placeholder="Confirm gamemaster password" required>
+          </p>
+          <p>
+            Give (optional) short description of the campaign.
+            <input type="text" name="new-camp-sdesc" placeholder="Description">
+          </p>
+
+        </form>
       </div>
 
-      <div class="home">
-          <h1>ShadowRun Character and Contacts</h1>
-          <p><br><br>
-          Application meant for players and gamemasters of Shadowrun tabletop.
-          <br>Work in progress, but desired features are as follows:
-          </p>
-          <ul>
-            <li>Create character using template JSON</li>
-            <li>Store created character to database</li>
-            <li>Modify the character as you play</li>
-            <li>Player can see her/his character, GM can see all characters</li>
-            <li>and more...</li>
-          </ul>
-      </div>
+      <hr>
 
       <div class="character">
         <h2 id="character-header">Character info comes here:</h2>
@@ -97,7 +124,7 @@ Main HTML is the home for the application after successful login.
 
     <!-- Static footer for version info etc. -->
     <div class="static-footer">
-      <p>Tabletop helper version 0.0.1. Backend <i> none </i> </p>
+      <p>Tabletop helper version 0.0.1. Backend <i> Django 2.1 </i> </p>
     </div>
   </body>
 
