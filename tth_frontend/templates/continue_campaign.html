@@ -1,0 +1,15 @@
+<!-- Continue on-going game or.. -->
+<div class="basic-list-view" id="main-continue-game">
+  <h2>Your campaigns</h2>
+  {% if mycampaigns %}
+    <ul>
+      {% for campaign in mycampaigns %}
+      {# <li> <a href="continue_campaign/"+{{campain.name}}/>{{campaign.name}}</a> </li> #}
+
+      <li> <a href="{% url 'tth:campaign' campaign_name=campaign.name %}"/>{{campaign.name}}</a> </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <i>You are not currently in any campaign. Join or create one!</i>
+  {% endif %}
+</div>

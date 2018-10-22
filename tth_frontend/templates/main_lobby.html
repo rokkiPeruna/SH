@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+  <title>Horny people near you!</title>
+{% endblock %}
+
+{% block styles_to_load %}
+<link rel="stylesheet" href="{% static 'styles/sh_theme_colors.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'styles/master.css' %}" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+
+<!-- Menu bar's basic content. Buttons may be added or removed
+depending on the state. -->
+{% block menubarcontent %}
+<div class="menu-bar">
+  <button type="button" id="menu-bar-menu-icon">
+    <i class="material-icons">menu</i>
+  </button>
+  <button type="button" id="menu-bar-left-btn" v-on:click="onLeftPressed">CREATE</button>
+  <button type="button" id="menu-bar-middle-btn" v-on:click="onMiddlePressed">JOIN</button>
+  <button type="button" id="menu-bar-rigth-btn" v-on:click="onRightPressed">CONTINUE</button>
+  <h3>Logged in as<br>{{logged_user}}</h3>
+</div>
+{% endblock %}
+
+
+<!-- Contains main functionality. Each state modifies this section.
+     Initial state is user's available game list and game creator. -->
+{% block appcontainer %}
+<div id="app-container">
+  <hr>
+  <div v-show="show_lcont">
+    {% include "continue_campaign.html" %}
+  </div>
+  <div v-show="show_mcont">
+    {% include "join_campaign.html" %}
+  </div>
+  <div v-show="show_rcont">
+    {% include "create_campaign.html" %}
+  </div>
+</div>
+{% endblock %}
+
+
+<!-- Static footer for version info etc. -->
+{% block footer %}
+<div class="static-footer">
+  <p>Tabletop helper version 0.0.1. Backend <i> Django 2.1 </i> </p>
+</div>
+{% endblock %}
+
+
+{% block scripts_to_load %}
+<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'js/jsoneditor.js' %}"></script>
+<script src="{% static 'scripts/main.js' %}"></script>
+<script src="{% static 'scripts/common/main_lobby_menu_bar.js' %}"></script>
+<script src="{% static 'scripts/common/parse_json.js' %}"></script>
+<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+{% endblock %}

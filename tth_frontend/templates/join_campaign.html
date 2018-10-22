@@ -1,0 +1,11 @@
+<!-- Join on-going game -->
+<div class="basic-list-view" id="main-join-game">
+  <h2>Join campaign</h2>
+  {% if campaigns %}
+    <ul>
+    {% for campaign in allcampaigns %}
+      <li> <a href="campaign/{{campain.name}}">{{campaign.name}}</a> </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>

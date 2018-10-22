@@ -11,9 +11,9 @@
   --main-body-color: #2a4d69;
   --main-body-border-attr: 1px solid #4b86b4;
 
-  --main-upper-menu-color: #000000;
-  --main-upper-menu-btn-color: #000000;
-  --main-upper-menu-btn-hover-color: #ffffff;
+  --main-menu-bar-color: #000000;
+  --main-menu-bar-btn-color: #000000;
+  --main-menu-bar-btn-hover-color: #ffffff;
 
   --main-button-color: #adcbe3;
   --main-button-hover-color: #5ede95;
@@ -74,7 +74,7 @@ body {
   padding: 1em;
 
   /* Top padding added so that fixed header won't cover stuff. Should be atleast
-  as much as 'upper-menu's height */
+  as much as 'menu-bar's height */
   padding-top: 5em;
 
   /* As html and body element are same size, 'app-container' should be seen (from
@@ -110,8 +110,8 @@ input {
   text-shadow: var(--common-text-shadow-attr);
 }
 
-/* 'upper-menu' works as a fixed menu bar */
-.upper-menu {
+/* 'menu-bar' works as a fixed menu bar */
+.menu-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -133,7 +133,7 @@ input {
   color: white;
 }
 /* Buttons with text */
-.upper-menu > button[id$="-btn"] {
+.menu-bar > button[id$="-btn"] {
   flex: 1;
   text-align: center;
   height: inherit;
@@ -142,25 +142,25 @@ input {
   text-shadow: var(--common-text-shadow-attr);
   border: none;
   border-right: 0.1em solid #63ace5;
-  background-color: var(--main-upper-menu-btn-color);
+  background-color: var(--main-menu-bar-btn-color);
   width: 5em;
   /* padding: 0.1em 0.1em; */
 }
-.upper-menu > button[id$="-btn"]:hover {
-  background-color: var(--main-upper-menu-btn-hover-color);
-  color: var(--main-upper-menu-btn-color);
+.menu-bar > button[id$="-btn"]:hover {
+  background-color: var(--main-menu-bar-btn-hover-color);
+  color: var(--main-menu-bar-btn-color);
 }
 
 /* Buttons with icons */
-.upper-menu > button[id$="-icon"] {
+.menu-bar > button[id$="-icon"] {
   background-color: #2a4d69;
   border: 0.5em solid #4b86b4;
   height: inherit;
   width: 7em;
 }
-.upper-menu > button[id$="-icon"]:hover {
+.menu-bar > button[id$="-icon"]:hover {
   background-color: var(--main-button-hover-color);
-  background-color: var(--main-upper-menu-btn-hover-color);
+  background-color: var(--main-menu-bar-btn-hover-color);
 }
 
 .modal {

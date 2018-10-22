@@ -1,0 +1,45 @@
+<!-- WORKS AS BASE STRUCTURE FOR TABLETOP HELPER APPLICATION -->
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Get Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    {% block title %}
+    <title> Error in 'title' template </title>
+    {% endblock %}
+
+    {% block styles_to_load %}
+    <!-- CSS -->
+    {% endblock %}
+
+  </head>
+
+  <body>
+
+    {% block menubarcontent %}
+    <p><i>Error in 'menubar' templates</i></p> <!-- Fallback value -->
+    {% endblock %}
+
+    {% block appcontainer %}
+    <p><i>Error in 'appcontainer' templates</i></p> <!-- Fallback value -->
+    {% endblock %}
+
+    {% block footer %}
+    <p><i>Error in 'footer' templates</i></p> <!-- Fallback value -->
+    {% endblock %}
+
+    {% block scripts_to_load %}
+    <p><i>Error in 'scripts_to_load' templates</i></p> <!-- Fallback value -->
+    {% endblock %}
+
+    {# <!-- Include scripts here --> #}
+    <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  </body>
+
+</html>

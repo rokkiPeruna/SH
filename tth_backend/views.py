@@ -1,15 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 # To prevent unauthorized access to views
 from django.contrib.auth.decorators import login_required
 
 # Models
-from .models import Campaign
+from .models import Campaign, User
+# Managers
+from .models import CampaignManager
 
 ######################################################################
 # First place to land, the index which directs directly to login page.
 # Login view is from Django, login.html is in root/registration/login.html
 ######################################################################
+from dummyserver.settings import *
 def index(request):
   return HttpResponseRedirect("accounts/login")
 
@@ -25,9 +28,11 @@ def index(request):
 @login_required
 def lobby_view(request):
   response = {
-    "campaigns": Campaign.objects.all()
+    "logged_user": request.user.username,
+    "allcampaigns": Campaign.objects.all(),
+    "mycampaigns": request.user.mycampaigns.all()
   }
-  return render(request, "main.html", response)
+  return render(request, "main_lobby.html", response)
 
 
 ######################################################################
@@ -63,12 +68,19 @@ def update_user_data(request):
 def create_campaign(request):
   if request.method == "POST":
     # Check that all necessary data is present
-    name = request.POST.get("new-camp-name")
-    pl_pw = request.POST.get("new-camp-pw")
-    gm_pw = request.POST.get("new-camp-gmpw")
-    sdesc = request.POST.get("name")
+    cname = request.POST.get("new-camp-name", False)
+    gm_pw = request.POST.get("new-camp-gmpw", False)
+    pl_pw = request.POST.get("new-camp-pw", False)
+    sdesc = request.POST.get("new-camp-sdesc", False)
+    if False in (cname, gm_pw, pl_pw, sdesc):
+      return HttpResponseBadRequest("Failed to create campaign")
+    else:
+      success = CampaignManager.add_campaign(request.user, cname, gm_pw, pl_pw, sdesc)
+      if success == False:
+        return HttpResponseBadRequest("Name conflict")
+      else:
+        return HttpResponseRedirect(success.name)
 
-  pass
 
 
 ######################################################################
@@ -76,14 +88,28 @@ def create_campaign(request):
 ######################################################################
 @login_required
 def join_campaign(request):
-  pass
+  if request.method == "POST":
+    # Check that all necessary data is available
+    cname = request.POST.get("join-camp-name", False)
+    camppw = request.POST.get("join-camp-pw", False)
+    if False in (cname, camppw):
+      return HttpResponseBadRequest("Invalid arguments")
+    else:
+      success = CampaignManager.join_campaign(request.user, cname, camppw)
+
+
+
 
 ######################################################################
 # Continue on-going campaign
 ######################################################################
 @login_required
-def continue_campaign(request):
-  pass
+def continue_campaign(request, campaign_name):
+  # Check that user is participant of the given campaign before redirecting
+  if request.user.mycampaigns_set.filter(name__exactly=campaign_name):
+    return redirect("campaign",  campaign_name=campaign_name, permanent=True)
+  else:
+    return HttpResponseBadRequest("Unable to continue for reason unknown")
 
 
 # # # # # # # # # # # # # # # #
@@ -95,13 +121,23 @@ def continue_campaign(request):
 ######################################################################
 # Campaign data, URL: 'campaign/#name'
 ######################################################################
+@login_required
 def campaign_data(request, campaign_name):
-  pass
+  # TODO: Do something and redirect to campaign lobby
+  return redirect("campaign_lobby")
 
+
+######################################################################
+# Campaign lobby view TODO: Separate game master and player!
+######################################################################
+@login_required
+def campaign_lobby(request, campaign_name):
+  pass
 
 ######################################################################
 # Campaign character(s). Regular player see her/his character and
 # public NPCs, gamemaster sees everything
 ######################################################################
+@login_required
 def character_data(request, character_name):
   pass

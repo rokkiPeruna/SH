@@ -21,11 +21,11 @@ paletton.com !!!
   --main-body-color: var(--BODY);
   --main-body-border-attr: 1px solid var(--EFFECT);
 
-  --main-upper-menu-color: #000000; /* Black menu */
-  --main-upper-menu-btn-color: #000000; /* With black buttons */
-  --main-upper-menu-btn-hover-color: #ffffff;
-  --main-upper-menu-icon-color: #87938e;
-  --main-upper-menu-icon-border-color: #265578;
+  --main-menu-bar-color: #000000; /* Black menu */
+  --main-menu-bar-btn-color: #000000; /* With black buttons */
+  --main-menu-bar-btn-hover-color: #ffffff;
+  --main-menu-bar-icon-color: #87938e;
+  --main-menu-bar-icon-border-color: #265578;
 
   --main-button-color: #adcbe3;
   --main-button-hover-color: #e7eff6;

@@ -1,0 +1,32 @@
+<!-- Create a new game! -->
+<div class="create-campaign" id="main-create-campaign">
+  <p>Create a new game</p>
+  <form action="/create_campaign/" method="post">
+    {% csrf_token %}
+    <p>
+      Campaign name. Players will find your campaign using this.
+      <input type="text" name="new-camp-name" placeholder="Campaign name" required>
+    </p>
+    <p>
+      Campaign password. Player will be able to join with this.
+      <input type="password" name="new-camp-pw" placeholder="Campaign password" required>
+    </p>
+    <p>
+      Confirm campaign password.
+      <input type="password" name="new-camp-confpw" placeholder="Confirm password" required>
+    </p>
+    <p>
+      Gamemaster password. Used for joining as gamemaster. You will be automatically added as a gamemaster so forgetting this doesn't prevent you from playing.
+      <input type="password" name="new-camp-gmpw" placeholder="Gamemaster password" required>
+    </p>
+    <p>
+      Confirm the gamemaster password.
+      <input type="password" name="new-camp-gmcpw" placeholder="Confirm gamemaster password" required>
+    </p>
+    <p>
+      Give (optional) short description of the campaign.
+      <input type="text" name="new-camp-sdesc" placeholder="Description">
+    </p>
+    <button type="submit" name="button">CREATE!</button>
+  </form>
+</div>
