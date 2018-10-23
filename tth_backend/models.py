@@ -56,9 +56,9 @@ class CampaignManager(models.Manager):
   # Returns True and success message on successful join.
   def join_campaign(user, cname, cpw):
     # Check that campaign exists
-    if Campaign.objects.filter(name__exactly=cname):
+    if Campaign.objects.filter(name__exact=cname):
       # Get first (and only) campaign from query set
-      campaign = Campaign.objects.filter(name__exactly=name)[0]
+      campaign = Campaign.objects.filter(name__exact=name)[0]
       # Match password
       if campaign.playerpassword == cpw:
         # Add campaign to user
@@ -93,6 +93,9 @@ class Campaign(models.Model):
 
   def __str__(self):
     return self.name
+
+  def get_absolute_url(self):
+    return "/campaign/%s" % self.name
 
 
 ######################################################################

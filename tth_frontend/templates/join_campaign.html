@@ -4,7 +4,8 @@
   {% if campaigns %}
     <ul>
     {% for campaign in allcampaigns %}
-      <li> <a href="campaign/{{campain.name}}">{{campaign.name}}</a> </li>
+      <li> <a href="{% url 'tth:join_campaign' %}">{{campaign.name}}</a> </li>
+
     {% endfor %}
   </ul>
   {% endif %}

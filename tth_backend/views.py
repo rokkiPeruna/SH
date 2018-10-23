@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 # To prevent unauthorized access to views
 from django.contrib.auth.decorators import login_required
@@ -95,8 +96,14 @@ def join_campaign(request):
     if False in (cname, camppw):
       return HttpResponseBadRequest("Invalid arguments")
     else:
+      # CampaignManager knows if password is valid
       success = CampaignManager.join_campaign(request.user, cname, camppw)
-
+      if success:
+        return redirect()
+      else:
+        return HttpResponseBadRequest("Wrong password")
+  else:
+    HttpResponseBadRequest("Trying some trickstery?")
 
 
 
@@ -106,8 +113,10 @@ def join_campaign(request):
 @login_required
 def continue_campaign(request, campaign_name):
   # Check that user is participant of the given campaign before redirecting
-  if request.user.mycampaigns_set.filter(name__exactly=campaign_name):
-    return redirect("campaign",  campaign_name=campaign_name, permanent=True)
+  if request.user.mycampaigns.filter(name__exact=campaign_name):
+    dummy = campaign_name
+    return redirect("/campaign_data/" + campaign_name, permanent=True)
+    # return redirect(reverse("campaign_data"), args=[campaign_name], permanent=True)
   else:
     return HttpResponseBadRequest("Unable to continue for reason unknown")
 
@@ -116,15 +125,13 @@ def continue_campaign(request, campaign_name):
 # CAMPAIGN PAGE FUNCTIONALITY
 # # # # # # # # # # # # # # # #
 
-# TODO: Ensure that only campaign's players can see these views
-
 ######################################################################
 # Campaign data, URL: 'campaign/#name'
 ######################################################################
 @login_required
 def campaign_data(request, campaign_name):
   # TODO: Do something and redirect to campaign lobby
-  return redirect("campaign_lobby")
+  return redirect("/campaign_lobby/" + campaign_name, permanent=True)
 
 
 ######################################################################
@@ -132,7 +139,7 @@ def campaign_data(request, campaign_name):
 ######################################################################
 @login_required
 def campaign_lobby(request, campaign_name):
-  pass
+  return HttpResponse("You are at campaign lobby")
 
 ######################################################################
 # Campaign character(s). Regular player see her/his character and
