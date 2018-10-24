@@ -38,4 +38,4 @@ var mlobby_cont = new Vue({
     show_mcont: false,
     show_rcont: false
   }
-}); // end main_lobby_menu_bar Vue
+}); // end mlobby_cont Vue

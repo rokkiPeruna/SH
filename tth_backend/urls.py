@@ -21,12 +21,7 @@ urlpatterns = [
   # Create campaign
   path("create_campaign", views.create_campaign, name="create_campaign"),
 
-  # Campaign page
-  # re_path(r"^campaign/(?P<campaign_name>\w+)", views.campaign_data, name="campaign_data"),
-  re_path(r"^campaign_data/(?P<campaign_name>)", views.campaign_data, name="campaign_data"),
-
-  # Campaign lobby
-  # re_path(r"^campaign/(?P<campaign_name>\w+)"+"/lobby", views.campaign_lobby, name="campaign_lobby"),
+  # Campaign lobby,
   re_path(r"^campaign_lobby/(?P<campaign_name>)", views.campaign_lobby, name="campaign_lobby"),
 
   # Character page

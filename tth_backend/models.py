@@ -58,7 +58,7 @@ class CampaignManager(models.Manager):
     # Check that campaign exists
     if Campaign.objects.filter(name__exact=cname):
       # Get first (and only) campaign from query set
-      campaign = Campaign.objects.filter(name__exact=name)[0]
+      campaign = Campaign.objects.filter(name__exact=cname)[0]
       # Match password
       if campaign.playerpassword == cpw:
         # Add campaign to user
@@ -71,6 +71,16 @@ class CampaignManager(models.Manager):
     else:
       return False, "No campaign with that name"
 
+  # Get campaign by name. Returns campaign model on success, False on failure
+  def get_campaign_by_name(cname):
+    # Check that campaign exists
+    if Campaign.objects.filter(name__exact=cname):
+      # Get first (and only) campaign from query set
+      campaign = Campaign.objects.filter(name__exact=cname)[0]
+      return campaign
+    else:
+      return False
+
   # Remove campaign from database (only game master is authorized)
   def remove_campaign(cname):
     pass
@@ -80,11 +90,16 @@ class CampaignManager(models.Manager):
 # and players.
 ######################################################################
 class Campaign(models.Model):
-  name = models.CharField(max_length=100)   # Story/campaign name
-  gmpassword = models.CharField(max_length=100) # For joining as game master
-  playerpassword = models.CharField(max_length=100) # For joining as player
+  # Story/campaign name
+  name = models.CharField(max_length=100)
+  # For joining as game master
+  gmpassword = models.CharField(max_length=100)
+  # For joining as player
+  playerpassword = models.CharField(max_length=100)
+  # Shown at main lobby
   shortdescription = models.CharField(max_length=150)
-  # Story ?
+  # Story this far
+  story = models.TextField(max_length=DATASHEET_MAX_LENGTH)
   # Maps ?
   # Simple character store ?
   # More ... ?
@@ -147,6 +162,8 @@ class CampaignParticipant(models.Model):
     choices=ROLES,
     default=PLAYER
   )
+  # Notes about the campaign
+  campaign_notes = models.TextField(max_length=(DATASHEET_MAX_LENGTH/2))
   # Created
   created = models.DateField(auto_now_add=True)
   # Last saved
@@ -166,9 +183,26 @@ class CampaignParticipant(models.Model):
 # Handles operations made to multiple Character models
 ######################################################################
 class CharacterManager(models.Manager):
-  # Returns campaings all character models as queryset (NOTE: for GM only)
+  # Returns campaigns all character models as queryset (NOTE: for GM only)
   def get_campaign_characters(campaign):
     return Character.objects.get(id=campaign_id)
+
+  # Creates character and binds it to given participant
+  def create_character(participant, name):
+    Character.objects.create(
+      participant=participant,
+      name=name,
+      datasheet="{data: dummy data}"
+    )
+
+  # Deletes character and unbinds it from owner participant
+  def delete_character(name):
+    pass
+
+  # Saves character with new datasheet
+  def save_character(name, datasheet):
+    pass
+
 
 ######################################################################
 # Character represents a character in a game campaign. It can be a user's

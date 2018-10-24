@@ -1,0 +1,14 @@
+<div class="campaign_characters">
+  <h2>{{campaign_name}}</h2>
+  <h3>CHARACTERS:</h3>
+  <hr>
+  <div id="campaign-story-section">
+  {% if characters %}
+    {% for character in characters  %}
+      <h4>{{character.name}}</h4>
+      <h5>{{character.datasheet}}</h5>
+    {% endfor %}
+  {% endif %}
+  </div>
+  <hr>
+</div>

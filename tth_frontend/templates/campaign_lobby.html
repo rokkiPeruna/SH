@@ -18,9 +18,9 @@ depending on the state. -->
   <button type="button" id="menu-bar-menu-icon">
     <i class="material-icons">menu</i>
   </button>
-  <button type="button" id="menu-bar-left-btn">CHARACTERS</button>
-  <button type="button" id="menu-bar-middle-btn">STORY</button>
-  <button type="button" id="menu-bar-rigth-btn">NOTES</button>
+  <button type="button" id="menu-bar-left-btn" v-on:click="onLeftPressed">CHARACTERS</button>
+  <button type="button" id="menu-bar-middle-btn" v-on:click="onMiddlePressed">STORY</button>
+  <button type="button" id="menu-bar-rigth-btn" v-on:click="onRightPressed">NOTES</button>
   <h3>Logged in as<br>{{logged_user}}</h3>
 </div>
 {% endblock %}
@@ -30,17 +30,15 @@ depending on the state. -->
      Initial state is user's available game list and game creator. -->
 {% block appcontainer %}
 <div id="app-container">
-  <div v-if="show_left_cont">
-    {% include "continue_campaign.html" %}
+  <div v-show="show_lcont">
+    {% include "characters.html" %}
   </div>
-  <hr>
-  <div v-if="show_middle_cont">
-    {% include "join_campaign.html" %}
+  <div v-show="show_mcont">
+    {% include "story.html" %}
   </div>
-  <div v-if="show_right_cont">
-    {% include "create_campaign.html" %}
+  <div v-show="show_rcont">
+    {% include "notes.html" %}
   </div>
-  <hr>
 </div>
 {% endblock %}
 
@@ -56,8 +54,7 @@ depending on the state. -->
 {% block scripts_to_load %}
 <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
 <script src="{% static 'js/jsoneditor.js' %}"></script>
-<script src="{% static 'scripts/main.js' %}"></script>
-<script src="{% static 'scripts/common/main_menu.js' %}"></script>
+<script src="{% static 'scripts/common/campaign_lobby_menu_bar.js' %}"></script>
 <script src="{% static 'scripts/common/parse_json.js' %}"></script>
 <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

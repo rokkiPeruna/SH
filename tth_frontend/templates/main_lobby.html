@@ -32,13 +32,13 @@ depending on the state. -->
 <div id="app-container">
   <hr>
   <div v-show="show_lcont">
-    {% include "continue_campaign.html" %}
+    {% include "create_campaign.html" %}
   </div>
   <div v-show="show_mcont">
     {% include "join_campaign.html" %}
   </div>
   <div v-show="show_rcont">
-    {% include "create_campaign.html" %}
+    {% include "continue_campaign.html" %}
   </div>
 </div>
 {% endblock %}
@@ -55,7 +55,6 @@ depending on the state. -->
 {% block scripts_to_load %}
 <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
 <script src="{% static 'js/jsoneditor.js' %}"></script>
-<script src="{% static 'scripts/main.js' %}"></script>
 <script src="{% static 'scripts/common/main_lobby_menu_bar.js' %}"></script>
 <script src="{% static 'scripts/common/parse_json.js' %}"></script>
 <script src="{% static 'js/jquery-3.3.1.js' %}"></script>

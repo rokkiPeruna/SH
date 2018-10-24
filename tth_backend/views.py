@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 # Models
 from .models import Campaign, User
 # Managers
-from .models import CampaignManager
+from .models import CampaignManager, CharacterManager
 
 ######################################################################
 # First place to land, the index which directs directly to login page.
@@ -99,7 +99,7 @@ def join_campaign(request):
       # CampaignManager knows if password is valid
       success = CampaignManager.join_campaign(request.user, cname, camppw)
       if success:
-        return redirect()
+        return redirect("/campaign_lobby", campaign_name=cname, permanent=True)
       else:
         return HttpResponseBadRequest("Wrong password")
   else:
@@ -114,9 +114,9 @@ def join_campaign(request):
 def continue_campaign(request, campaign_name):
   # Check that user is participant of the given campaign before redirecting
   if request.user.mycampaigns.filter(name__exact=campaign_name):
-    dummy = campaign_name
-    return redirect("/campaign_data/" + campaign_name, permanent=True)
-    # return redirect(reverse("campaign_data"), args=[campaign_name], permanent=True)
+    rediurl = "/campaign_lobby/"+campaign_name
+    # Return what ever campaign lobby returns
+    return campaign_lobby(request, campaign_name)
   else:
     return HttpResponseBadRequest("Unable to continue for reason unknown")
 
@@ -126,20 +126,25 @@ def continue_campaign(request, campaign_name):
 # # # # # # # # # # # # # # # #
 
 ######################################################################
-# Campaign data, URL: 'campaign/#name'
-######################################################################
-@login_required
-def campaign_data(request, campaign_name):
-  # TODO: Do something and redirect to campaign lobby
-  return redirect("/campaign_lobby/" + campaign_name, permanent=True)
-
-
-######################################################################
 # Campaign lobby view TODO: Separate game master and player!
 ######################################################################
 @login_required
 def campaign_lobby(request, campaign_name):
-  return HttpResponse("You are at campaign lobby")
+  usr = request.user
+  campaign = CampaignManager.get_campaign_by_name(campaign_name)
+  # TODO Check campaign sanity
+  story = campaign.story
+  notes = "dummy notes"
+  response = {
+    "logged_user": usr.username,
+    "campaign_name": campaign.name,
+    "campaign_story": story,
+    "campaign_notes": notes,
+
+    "characters": ["jds", "sfeds", "adsa"],
+    # "characters": CharacterManager.get_campaign_characters(campaign),
+  }
+  return render(request, "campaign_lobby.html", response)
 
 ######################################################################
 # Campaign character(s). Regular player see her/his character and
