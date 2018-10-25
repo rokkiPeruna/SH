@@ -53,7 +53,7 @@ class CampaignManager(models.Manager):
 
   # Adds user to campaign is campaign with given name exists and password matches.
   # Returns False and error message if joining fails or campaign doesn't exist.
-  # Returns True and success message on successful join.
+  # Returns True and campaign model on successful join.
   def join_campaign(user, cname, cpw):
     # Check that campaign exists
     if Campaign.objects.filter(name__exact=cname):
@@ -65,7 +65,7 @@ class CampaignManager(models.Manager):
         user.mycampaigns.add(campaign)
         # and create and bind participant model
         partic = CampaignParticipantManager.create_and_bind_participant(user, campaign, PLAYER)
-        return True, "Successfully joined the campaign!"
+        return True, campaign
       else: # return with error
         return False, "Password didn't match"
     else:

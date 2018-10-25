@@ -1,7 +1,7 @@
 <!-- Create a new game! -->
 <div class="create-campaign" id="main-create-campaign">
   <p>Create a new game</p>
-  <form action="/create_campaign/" method="post">
+  <form action="/campaign/new/create/" method="post">
     {% csrf_token %}
     <p>
       Campaign name. Players will find your campaign using this.

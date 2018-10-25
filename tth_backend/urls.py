@@ -5,26 +5,22 @@ from . import views
 
 app_name = "tth"
 urlpatterns = [
+  # Redirects to accounts and login
   path("", views.index, name="index"),
+
+  # Main lobby view. Join, continue and create campaigns
   path("main", views.lobby_view, name="main"),
-  path("get_campaigns", views.get_campaigns, name="get_campaigns"),
 
   # Login, logout and other account views come from Django (see 'registration' -folder)
   path("accounts/", include("django.contrib.auth.urls")),
 
-  # Continue campaign
-  re_path(r"^continue_campaign/(?P<campaign_name>\w+)/$", views.continue_campaign, name="continue_campaign"),
+  # Campaign view
+  re_path(r"^campaign/(?P<campaign_name>\w+)/(?P<operation>\w+)", views.campaign, name="campaign"),
 
-  # Join campaign
-  re_path(r"^join_campaign/(?P<campaign_name>\w+)", views.join_campaign, name="join_campaign"),
+  # User's campaign view
+  re_path(r"^campaign/(?P<campaign_name>)/(?P<user_name>\w+)/", views.user_camp_view, name="user_camp_view"),
 
-  # Create campaign
-  path("create_campaign", views.create_campaign, name="create_campaign"),
-
-  # Campaign lobby,
-  re_path(r"^campaign_lobby/(?P<campaign_name>)", views.campaign_lobby, name="campaign_lobby"),
-
-  # Character page
+  # Character view
   re_path(r"^character/(?P<character_name>\w+)", views.character_data, name="character"),
 
 
