@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.shortcuts import get_object_or_404
 
 # How large character datasheet can get
 DATASHEET_MAX_LENGTH = 65535 #64 kB, should be enough for normal writers
@@ -36,49 +37,50 @@ class CampaignManager(models.Manager):
 
   # Add campaign to database if no name conflicts. Adds creator as participant
   # with game master role.
-  # Returns False if campaign with given name exists.
-  # On successful creation the campaign model is returned
+  # On failure returns False and error message.
+  # On success returns the campaign and the participant.
   def add_campaign(user, cname, gmpw, plpw, sdesc):
-    if Campaign.objects.filter(name=cname):
-      return False
-    else:
-      # Create campaign,
+    try: #to find existing campaign
+      Campaign.objects.get(name__exact=cname)
+    except Campaign.DoesNotExist as success: #No such campaign exists!
       campaign = Campaign.objects.create(name=cname, gmpassword=gmpw, playerpassword=plpw, shortdescription=sdesc)
-      # add user to the campaign
       user.mycampaigns.add(campaign)
-      # and create participant with game master role that is bound to the user
-      # and the campaign
       partic = CampaignParticipantManager.create_and_bind_participant(user, campaign, GAMEMASTER)
-      return campaign
-
-  # Adds user to campaign is campaign with given name exists and password matches.
-  # Returns False and error message if joining fails or campaign doesn't exist.
-  # Returns True and campaign model on successful join.
-  def join_campaign(user, cname, cpw):
-    # Check that campaign exists
-    if Campaign.objects.filter(name__exact=cname):
-      # Get first (and only) campaign from query set
-      campaign = Campaign.objects.filter(name__exact=cname)[0]
-      # Match password
-      if campaign.playerpassword == cpw:
-        # Add campaign to user
-        user.mycampaigns.add(campaign)
-        # and create and bind participant model
-        partic = CampaignParticipantManager.create_and_bind_participant(user, campaign, PLAYER)
-        return True, campaign
-      else: # return with error
-        return False, "Password didn't match"
+      return campaign, partic
+    except models.MultipleObjectsReturned as err:
+      # Something is terribly wrong
+      return False, "Multiple campaigns with name {} exists!".format(cname)
     else:
+      return False, "Internal error when adding campaign"
+
+
+  # Adds user to campaign if campaign with given name exists and password matches.
+  # Returns False and error message if joining fails or campaign doesn't exist.
+  # Returns True and campaign and participant model on successful join.
+  def join_campaign(user, cname, cpw):
+    try:
+      campaign = Campaign.objects.get(name__exact=cname)
+      if campaign.playerpassword == cpw:
+        user.mycampaigns.add(campaign)
+        partic = CampaignParticipantManager.create_and_bind_participant(user, campaign, PLAYER)
+        return True, (campaign, partic)
+      else:
+        return False, "Password didn't match"
+    except (models.MultipleObjectsReturned, models.DoesNotExist) as err:
+      # TODO: Log properly
       return False, "No campaign with that name"
 
   # Get campaign by name. Returns campaign model on success, False on failure
   def get_campaign_by_name(cname):
     # Check that campaign exists
-    if Campaign.objects.filter(name__exact=cname):
-      # Get first (and only) campaign from query set
-      campaign = Campaign.objects.filter(name__exact=cname)[0]
+    try :
+      campaign = Campaign.objects.get(name__exact=cname)
       return campaign
-    else:
+    except models.MultipleObjectsReturned as err:
+      # TODO: Log properly
+      return False
+    except models.DoesNotExist as err:
+      # TODO: Log properly
       return False
 
   # Remove campaign from database (only game master is authorized)

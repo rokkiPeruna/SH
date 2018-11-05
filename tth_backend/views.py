@@ -74,9 +74,9 @@ def update_user_data(request):
 # "continue"
 ######################################################################
 @login_required
-def campaign(request, campaign_name, operation):
+def campaign(request, campaign_name):
   # Success indicator and payload which is response
-  result = (False, "Keijo")
+  result = [False, "Keijo"]
   if request.method == "POST":
     if operation == CAMPAIGN_OPERATIONS["CREATE"]:
       result = _create_campaign(request)
@@ -86,108 +86,98 @@ def campaign(request, campaign_name, operation):
     if operation == CAMPAIGN_OPERATIONS["CONTINUE"]:
       result = _continue_campaign(request, campaign_name)
   else:
-    result = (False, "Invalid HTTP operation for campaign")
+    result = False, "Invalid HTTP operation for campaign"
 
-  if result[0] == True:
+  if result[0] == True or 1:
     # TODO: LOG SUCCESS
     # logger.info("Performed operation '{}' with campaign '{}'")
-    return render(request, "campaign_lobby.html", result[1])
+    # Redirect to participant view
+    # request.session["userdata"] = result[1]
+    # return redirect("/campaign/{}/{}".format(campaign_name, "kalle"), permanent=True)
+    process_view
+    return redirect("tth:participant",
+      campaign_name=campaign_name,
+      participant="kallejuukkala"
+      )
+    #return render(request, "campaign_lobby.html", result[1])
   else:
     # TODO: LOG FAILURE
     # logger.info("Operation '{}' FAILED with campaign '{}'")
-    return HttpResponse(operation +"!"+campaign_name)
-
+    #return HttpResponse(result[1] +"!"+campaign_name)
+    pass
 
 ######################################################################
 # Create a new campaign
 ######################################################################
 @login_required
-def _create_campaign(request):
+def create_campaign(request):
   # Check that all necessary data is present
-  cname = request.POST.get("new-camp-name")
-  gm_pw = request.POST.get("new-camp-gmpw")
-  pl_pw = request.POST.get("new-camp-pw")
-  sdesc = request.POST.get("new-camp-sdesc")
+  cname = request.POST["new-camp-name"]
+  gm_pw = request.POST["new-camp-gmpw"]
+  pl_pw = request.POST["new-camp-pw"]
+  sdesc = request.POST["new-camp-sdesc"]
   if None in (cname, gm_pw, pl_pw, sdesc):
     return False, "Invalid args, failed to create campaign with name '{}'".format(cname)
   else:
-    campaign = CampaignManager.add_campaign(request.user, cname, gm_pw, pl_pw, sdesc)
-    if campaign != False:
-      story = campaign.story # TODO Check campaign sanity
-      notes = "dummy notes" # TODO Get user notes
-      response = {
-        "logged_user": request.user.username,
-        "campaign_name": campaign.name,
-        "campaign_story": story,
-        "campaign_notes": notes,
-        "characters": ["jds", "sfeds", "adsa"],
-        # "characters": CharacterManager.get_campaign_characters(campaign),
-      }
-      # Parse 'new' from URL
-      return (True, response)
+    result = CampaignManager.add_campaign(request.user, cname, gm_pw, pl_pw, sdesc)
+    if result[0] != False:
+      return redirect("tth:participant", campaign_name=cname, participant=request.user.username)
     else:
-      return (False, "Failed to create campaign '{}'".format(cname))
+      return HttpResponse("Failed to create campaign '{}'. Error: {}".format(cname, result[1]))
 
 
 ######################################################################
 # Continue on-going campaign
 ######################################################################
 @login_required
-def _continue_campaign(request, campaign_name):
+def continue_campaign(request, campaign_name):
   # Check that user is participant of the given campaign before redirecting
   qlist = request.user.mycampaigns.filter(name__exact=campaign_name)
   if qlist != None and qlist.count():
     campaign = CampaignManager.get_campaign_by_name(campaign_name)
-    story = campaign.story # TODO Check campaign sanity
-    notes = "dummy notes" # TODO Get user notes
-    response = {
-      "logged_user": request.user.username,
-      "campaign_name": campaign.name,
-      "campaign_story": story,
-      "campaign_notes": notes,
-      "characters": ["jds", "sfeds", "adsa"],
-      # "characters": CharacterManager.get_campaign_characters(campaign),
-    }
-    return (True, response)
+    return redirect("tth:participant", campaign_name=campaign_name, participant=request.user.username)
   else:
-    return (False, "Failed to join campaign")
+    return False, "Failed to join campaign"
 
 
 ######################################################################
 # Join on-going campaign
 ######################################################################
 @login_required
-def _join_campaign(request):
+def join_campaign(request):
   # Check that all necessary data is available
   cname = request.POST.get("join-camp-name", False)
   camppw = request.POST.get("join-camp-pw", False)
   if False in (cname, camppw):
-    return False, "Invalid arguments"
+    return HttpResponseBadRequest("Invalid arguments")
   else:
     # CampaignManager knows if password is valid
     success, msg = CampaignManager.join_campaign(request.user, cname, camppw)
     if success:
-      campaign = msg#contains the campaign model
-      story = campaign.story # TODO Check campaign sanity
-      notes = "dummy notes" # TODO Get user notes
-      response = {
-        "logged_user": request.user.username,
-        "campaign_name": campaign.name,
-        "campaign_story": story,
-        "campaign_notes": notes,
-        "characters": ["jds", "sfeds", "adsa"],
-        # "characters": CharacterManager.get_campaign_characters(campaign),
-      }
-      return (True, response)
+      partic = msg[1]#contains the participant model
+      return redirect("tth:participant", campaign_name=campaign_name, participant=partic.owner)
     else:
-      return (False, "Failed to join '{}' campaign".format(cname))
+      return HttpResponseBadRequest("Failed to join '{}' campaign".format(cname))
 
 
 ######################################################################
 #
 ######################################################################
-def user_camp_view(request, campaign_name, user_name):
-  pass
+@login_required
+def participant(request, campaign_name, participant):
+  # TODO Get participant data
+  campaign = CampaignManager.get_campaign_by_name(campaign_name)
+  story = campaign.story # TODO Check campaign sanity
+  notes = "dummy notes" # TODO Get user notes
+  response = {
+    "logged_user": request.user.username,
+    "campaign_name": campaign.name,
+    "campaign_story": story,
+    "campaign_notes": notes,
+    "characters": ["jds", "sfeds", "adsa"],
+    # "characters": CharacterManager.get_campaign_characters(campaign),
+  }
+  return render(request, "campaign_lobby.html", response)
 
 
 ######################################################################

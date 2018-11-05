@@ -14,14 +14,29 @@ urlpatterns = [
   # Login, logout and other account views come from Django (see 'registration' -folder)
   path("accounts/", include("django.contrib.auth.urls")),
 
-  # Campaign view
-  re_path(r"^campaign/(?P<campaign_name>\w+)/(?P<operation>\w+)", views.campaign, name="campaign"),
+  # Campaign view.
+  path("campaign/<slug:campaign_name>",
+    views.campaign, name="campaign"),
 
-  # User's campaign view
-  re_path(r"^campaign/(?P<campaign_name>)/(?P<user_name>\w+)/", views.user_camp_view, name="user_camp_view"),
+  # Create campaign view.
+  path("campaign/create/",
+    views.create_campaign, name="create_campaign"),
+
+  # Join campaign view.
+  path("campaign/<slug:campaign_name>/join",
+    views.join_campaign, name="join_campaign"),
+
+  # Continue campaign view.
+  path("campaign/<slug:campaign_name>/continue",
+    views.continue_campaign, name="continue_campaign"),
+
+  # Participants's campaign view
+  path("campaign/<slug:campaign_name>/<slug:participant>",
+    views.participant, name="participant"),
 
   # Character view
-  re_path(r"^character/(?P<character_name>\w+)", views.character_data, name="character"),
+  path("campaign/<slug:campaign_name>/<slug:participant>/<slug:character>",
+    views.character_data, name="character"),
 
 
 ]
