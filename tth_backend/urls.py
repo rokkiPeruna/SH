@@ -15,11 +15,11 @@ urlpatterns = [
   path("accounts/", include("django.contrib.auth.urls")),
 
   # Campaign view.
-  path("campaign/<slug:campaign_name>",
-    views.campaign, name="campaign"),
+  # path("campaign/<slug:campaign_name>",
+    # views.campaign, name="campaign"),
 
   # Create campaign view.
-  path("campaign/create/",
+  path("campaign/create",
     views.create_campaign, name="create_campaign"),
 
   # Join campaign view.
@@ -31,11 +31,11 @@ urlpatterns = [
     views.continue_campaign, name="continue_campaign"),
 
   # Participants's campaign view
-  path("campaign/<slug:campaign_name>/<slug:participant>",
-    views.participant, name="participant"),
+  path("campaign/<slug:campaign_name>/<slug:username>",
+    views.userview, name="userview"),
 
   # Character view
-  path("campaign/<slug:campaign_name>/<slug:participant>/<slug:character>",
+  path("campaign/<slug:campaign_name>/<slug:username>/<slug:character>",
     views.character_data, name="character"),
 
 

@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 # How large character datasheet can get
 DATASHEET_MAX_LENGTH = 65535 #64 kB, should be enough for normal writers
 
-# Campaign participant roles
+# Campaign roles
 PLAYER = "PL"
 GAMEMASTER = "GM"
 SPECTATOR = "SPEC"
@@ -24,8 +24,7 @@ ROLES = (
 # is either terminated or the character dies. Each character holds a character
 # sheet which is their main source of information.
 # Users are bound to the campaign via their character and password.
-# Session participant model is used as intermediary when
-# handling campaign roles and data.
+
 
 
 ######################################################################
@@ -35,18 +34,16 @@ ROLES = (
 ######################################################################
 class CampaignManager(models.Manager):
 
-  # Add campaign to database if no name conflicts. Adds creator as participant
-  # with game master role.
+  # Add campaign to database if no name conflicts. Adds creator as the game master.
   # On failure returns False and error message.
-  # On success returns the campaign and the participant.
+  # On success returns the campaign.
   def add_campaign(user, cname, gmpw, plpw, sdesc):
     try: #to find existing campaign
       Campaign.objects.get(name__exact=cname)
     except Campaign.DoesNotExist as success: #No such campaign exists!
       campaign = Campaign.objects.create(name=cname, gmpassword=gmpw, playerpassword=plpw, shortdescription=sdesc)
-      user.mycampaigns.add(campaign)
-      partic = CampaignParticipantManager.create_and_bind_participant(user, campaign, GAMEMASTER)
-      return campaign, partic
+      user.campaigns.add(campaign)
+      return campaign, "Successfully created campaing!"
     except models.MultipleObjectsReturned as err:
       # Something is terribly wrong
       return False, "Multiple campaigns with name {} exists!".format(cname)
@@ -56,17 +53,16 @@ class CampaignManager(models.Manager):
 
   # Adds user to campaign if campaign with given name exists and password matches.
   # Returns False and error message if joining fails or campaign doesn't exist.
-  # Returns True and campaign and participant model on successful join.
+  # Returns True and campaign model on successful join.
   def join_campaign(user, cname, cpw):
     try:
       campaign = Campaign.objects.get(name__exact=cname)
       if campaign.playerpassword == cpw:
-        user.mycampaigns.add(campaign)
-        partic = CampaignParticipantManager.create_and_bind_participant(user, campaign, PLAYER)
-        return True, (campaign, partic)
+        user.campaigns.add(campaign)
+        return True, campaign
       else:
         return False, "Password didn't match"
-    except (models.MultipleObjectsReturned, models.DoesNotExist) as err:
+    except (Campaign.MultipleObjectsReturned, Campaign.DoesNotExist) as err:
       # TODO: Log properly
       return False, "No campaign with that name"
 
@@ -76,10 +72,10 @@ class CampaignManager(models.Manager):
     try :
       campaign = Campaign.objects.get(name__exact=cname)
       return campaign
-    except models.MultipleObjectsReturned as err:
+    except Campaign.MultipleObjectsReturned as err:
       # TODO: Log properly
       return False
-    except models.DoesNotExist as err:
+    except Campaign.DoesNotExist as err:
       # TODO: Log properly
       return False
 
@@ -124,7 +120,7 @@ class Campaign(models.Model):
 ######################################################################
 class User(AbstractUser):
   # App users can join many campaigns and campaigns can have many user
-  mycampaigns = models.ManyToManyField(Campaign)
+  campaigns = models.ManyToManyField(Campaign)
   # Created
   created = models.DateField(auto_now_add=True)
   # Last saved
@@ -135,69 +131,26 @@ class User(AbstractUser):
 
 
 ######################################################################
-# CampaignParticipantManager handles bindings between users and campaigns
-# via the CampaignParticipant model
-######################################################################
-class CampaignParticipantManager(models.Manager):
-  # Creates participant and binds it to given user and campaign with given role.
-  # Returns the created participant.
-  def create_and_bind_participant(user, campaign, role):
-    partic = CampaignParticipant.objects.create(owner=user, campaign=campaign, name=user.username, role=role)
-    return partic
-
-  def delete_participant(user):
-    pass
-
-######################################################################
-# CampaignParticipant represents the game campaign's player or game master
-######################################################################
-class CampaignParticipant(models.Model):
-  # Each campaign participant is bound to single campaign
-  owner = models.ForeignKey(User, on_delete=models.CASCADE)
-  # and to a single user
-  campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
-  # Name of the participant, gets set to User's username
-  name = models.CharField(max_length=100)
-  # Role: either player or game master (or spectator)
-  role = models.CharField(
-    max_length=4,
-    choices=ROLES,
-    default=PLAYER
-  )
-  # Notes about the campaign
-  campaign_notes = models.TextField(max_length=(DATASHEET_MAX_LENGTH/2))
-  # Created
-  created = models.DateField(auto_now_add=True)
-  # Last saved
-  last_saved = models.DateField(auto_now=True)
-
-  # Custom manager
-  objects = CampaignParticipantManager()
-
-  def is_gamemaster(self):
-    return (self.role == GAMEMASTER)
-
-  def __str__(self):
-    return self.name
-
-
-######################################################################
 # Handles operations made to multiple Character models
 ######################################################################
 class CharacterManager(models.Manager):
   # Returns campaigns all character models as queryset (NOTE: for GM only)
-  def get_campaign_characters(campaign):
-    return Character.objects.get(id=campaign_id)
+  def get_campaign_characters(campaign_name):
+      return None
 
-  # Creates character and binds it to given participant
-  def create_character(participant, name):
+  # Creates character and binds it to given user
+  def create_character(user, name):
     Character.objects.create(
-      participant=participant,
+      owner=user,
       name=name,
       datasheet="{data: dummy data}"
     )
 
-  # Deletes character and unbinds it from owner participant
+  # Returns all user's characters
+  def get_characters(user):
+    return None
+
+  # Deletes character
   def delete_character(name):
     pass
 
@@ -211,8 +164,8 @@ class CharacterManager(models.Manager):
 # character or an NPC created by the game master(s).
 ######################################################################
 class Character(models.Model):
-  # Each normal character is bound to single campaign participant
-  participant = models.ForeignKey(CampaignParticipant, on_delete=models.CASCADE)
+  # Each normal character is bound to a single user
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
   # Character name
   name = models.CharField(max_length=100)
   # Character's data sheet as JSON
@@ -232,9 +185,10 @@ class Character(models.Model):
 # MainNPC represents an NPC which is key part of the campaign.
 ######################################################################
 class MainNPC(models.Model):
-  name = models.CharField(max_length=100)
   # Each main NPC is bound to a single campaign
   campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+  # Actual name as in 'John the Dripper'
+  name = models.CharField(max_length=100)
   # NPC data sheet in JSON
   datasheet = models.TextField(max_length=DATASHEET_MAX_LENGTH)
   # Is NPC's data visible to players?

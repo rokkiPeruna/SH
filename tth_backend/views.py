@@ -36,11 +36,7 @@ def lobby_view(request):
   response = {
     "logged_user": request.user.username,
     "allcampaigns": Campaign.objects.all(),
-    "mycampaigns": request.user.mycampaigns.all(),
-    # Campaign operations
-    "coper_continue": CAMPAIGN_OPERATIONS["CONTINUE"],
-    "coper_join": CAMPAIGN_OPERATIONS["JOIN"],
-    "coper_create": CAMPAIGN_OPERATIONS["CREATE"]
+    "campaigns": request.user.campaigns.all(),
   }
   return render(request, "main_lobby.html", response)
 
@@ -66,45 +62,11 @@ def update_user_data(request):
 # # # # # # # # # # # # # # # #
 
 ######################################################################
-# Campaign view TODO: Separate game master and player!
-# 'campaign_name' is the campaign which the 'operation' targets.
-# Valid operations:
-# "join"
-# "create"
-# "continue"
+# Campaign view TODO: Necessary?
 ######################################################################
 @login_required
 def campaign(request, campaign_name):
-  # Success indicator and payload which is response
-  result = [False, "Keijo"]
-  if request.method == "POST":
-    if operation == CAMPAIGN_OPERATIONS["CREATE"]:
-      result = _create_campaign(request)
-    elif operation == CAMPAIGN_OPERATIONS["JOIN"]:
-      result = _join_campaign(request)
-  elif request.method == "GET":
-    if operation == CAMPAIGN_OPERATIONS["CONTINUE"]:
-      result = _continue_campaign(request, campaign_name)
-  else:
-    result = False, "Invalid HTTP operation for campaign"
-
-  if result[0] == True or 1:
-    # TODO: LOG SUCCESS
-    # logger.info("Performed operation '{}' with campaign '{}'")
-    # Redirect to participant view
-    # request.session["userdata"] = result[1]
-    # return redirect("/campaign/{}/{}".format(campaign_name, "kalle"), permanent=True)
-    process_view
-    return redirect("tth:participant",
-      campaign_name=campaign_name,
-      participant="kallejuukkala"
-      )
-    #return render(request, "campaign_lobby.html", result[1])
-  else:
-    # TODO: LOG FAILURE
-    # logger.info("Operation '{}' FAILED with campaign '{}'")
-    #return HttpResponse(result[1] +"!"+campaign_name)
-    pass
+    return HttpResponse("Wai u hier?")
 
 ######################################################################
 # Create a new campaign
@@ -117,11 +79,11 @@ def create_campaign(request):
   pl_pw = request.POST["new-camp-pw"]
   sdesc = request.POST["new-camp-sdesc"]
   if None in (cname, gm_pw, pl_pw, sdesc):
-    return False, "Invalid args, failed to create campaign with name '{}'".format(cname)
+    return HttpResponseBadRequest("Invalid args, failed to create campaign with name '{}'".format(cname))
   else:
     result = CampaignManager.add_campaign(request.user, cname, gm_pw, pl_pw, sdesc)
     if result[0] != False:
-      return redirect("tth:participant", campaign_name=cname, participant=request.user.username)
+      return redirect("tth:userview", campaign_name=cname, username=request.user.username)
     else:
       return HttpResponse("Failed to create campaign '{}'. Error: {}".format(cname, result[1]))
 
@@ -131,11 +93,10 @@ def create_campaign(request):
 ######################################################################
 @login_required
 def continue_campaign(request, campaign_name):
-  # Check that user is participant of the given campaign before redirecting
-  qlist = request.user.mycampaigns.filter(name__exact=campaign_name)
+  qlist = request.user.campaigns.filter(name__exact=campaign_name)
   if qlist != None and qlist.count():
     campaign = CampaignManager.get_campaign_by_name(campaign_name)
-    return redirect("tth:participant", campaign_name=campaign_name, participant=request.user.username)
+    return redirect("tth:userview", campaign_name=campaign_name, username=request.user.username)
   else:
     return False, "Failed to join campaign"
 
@@ -152,20 +113,18 @@ def join_campaign(request):
     return HttpResponseBadRequest("Invalid arguments")
   else:
     # CampaignManager knows if password is valid
-    success, msg = CampaignManager.join_campaign(request.user, cname, camppw)
+    success, campaign = CampaignManager.join_campaign(request.user, cname, camppw)
     if success:
-      partic = msg[1]#contains the participant model
-      return redirect("tth:participant", campaign_name=campaign_name, participant=partic.owner)
+      return redirect("tth:userview", campaign_name=campaign.name, username=request.user.username)
     else:
       return HttpResponseBadRequest("Failed to join '{}' campaign".format(cname))
 
 
 ######################################################################
-#
+# User's view to campaign and characters etc.
 ######################################################################
 @login_required
-def participant(request, campaign_name, participant):
-  # TODO Get participant data
+def userview(request, campaign_name, username):
   campaign = CampaignManager.get_campaign_by_name(campaign_name)
   story = campaign.story # TODO Check campaign sanity
   notes = "dummy notes" # TODO Get user notes
