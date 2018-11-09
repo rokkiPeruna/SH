@@ -1,0 +1,28 @@
+/* COMMON SIZE PARAMETERS */
+:root {
+  /* THEME COLORS */
+  --BG: #242F24;
+  --BODY: #6a5c4d;
+  --HEADER: #9FA2BC;
+  --TEXT: #FFFFFF;
+  --OUTLINE: #A39F6E;
+  --EFFECT: #152115;
+
+  --main-bg-color: var(--BG);
+  --main-body-color: var(--BODY);
+  --main-body-border-attr: 1px solid var(--EFFECT);
+
+  --main-menu-bar-color: #000000; /* Black menu */
+  --main-menu-bar-btn-color: #000000; /* With black buttons */
+  --main-menu-bar-btn-hover-color: #ffffff;
+  --main-menu-bar-icon-color: #73A673;
+  --main-menu-bar-icon-border-color: #445F44;
+
+  --main-button-color: #adcbe3;
+  --main-button-hover-color: #17131C;
+  --common-text-shadow-attr: 0px 0px 1px var(--OUTLINE);
+  --common-font-size: 20px;
+  --common--button-font-size: 22px;
+
+  --attr-bg-color: #86c2f2;
+}

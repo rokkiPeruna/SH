@@ -21,7 +21,7 @@
         <div class="modal-content" id="about-content" v-on:click="showModal">
             <p class="modal-text">
             Application meant for players and gamemasters
-            of great tabletop RPGs. Choose game, sign in with your username
+            of great tabletop RPGs. Choose game, sign in with your usr_name
             and password and enjoy!
             </p>
             <hr>
@@ -41,7 +41,7 @@
         <form class="login-form" method="POST">
           {% csrf_token %}
           <p>
-            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="usr_name" placeholder="Username">
           </p>
           <p>
             <input type="password" name="password" placeholder="Password">

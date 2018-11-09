@@ -4,7 +4,7 @@
   {% if campaigns %}
     <ul>
       {% for campaign in campaigns %}
-      <li> <a href="{% url 'tth:continue_campaign' campaign_name=campaign.name %}"/>{{campaign.name}}</a> </li>
+      <li> <a href="{% url 'tth:continue_campaign' camp_name=campaign.name %}"/>{{campaign.name}}</a> </li>
     {% endfor %}
   </ul>
   {% else %}

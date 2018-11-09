@@ -15,13 +15,35 @@
 depending on the state. -->
 {% block menubarcontent %}
 <div class="menu-bar">
-  <button type="button" id="menu-bar-menu-icon">
-    <i class="material-icons">menu</i>
-  </button>
-  <button type="button" id="menu-bar-left-btn" v-on:click="onLeftPressed">CHARACTERS</button>
-  <button type="button" id="menu-bar-middle-btn" v-on:click="onMiddlePressed">STORY</button>
-  <button type="button" id="menu-bar-rigth-btn" v-on:click="onRightPressed">NOTES</button>
-  <h3>Logged in as<br>{{logged_user}}</h3>
+
+  <!-- Main functionality buttons -->
+  <div id="menu-bar-main-func-btns" v-show="show_main_functionality">
+    <!-- Menu button -->
+    <button type="button" id="menu-bar-menu-icon" v-on:click="onMenuIconPressed">
+      <i class="material-icons">menu</i>
+    </button>
+    <button type="button" id="menu-bar-left-btn" v-on:click="onMainLeftPressed">[[main_left_sect_title]]</button>
+    <button type="button" id="menu-bar-middle-btn" v-on:click="onMainMiddlePressed">[[main_middle_sect_title]]</button>
+    <button type="button" id="menu-bar-rigth-btn" v-on:click="onMainRightPressed">[[main_right_sect_title]]</button>
+    <!-- Profile/login/settings button -->
+    <button type="button" id="menu-bar-profile-icon">
+      <i class="material-icons">settings</i>
+    </button>
+  </div>
+
+  <!-- Secondary functionality buttons. Shown if title is set. -->
+  <div id="menu-bar-sec-func-btns" v-show="!show_main_functionality">
+    <button type="button" id="menu-bar-back-icon" v-on:click="onMenuIconPressed">
+      <i class="material-icons">arrow_back</i>
+    </button>
+    <button type="button" id="sec-menu-bar-left-btn" v-show="sec_left_sect_title!==''" v-on:click="onSecLeftPressed">[[sec_left_sect_title]]</button>
+    <button type="button" id="sec-menu-bar-middle-btn" v-show="sec_middle_sect_title!==''" v-on:click="onSecMiddlePressed">[[sec_middle_sect_title]]</button>
+    <button type="button" id="sec-menu-bar-rigth-btn" v-show="sec_right_sect_title!==''" v-on:click="onSecRightPressed">[[sec_right_sect_title]]</button>
+    <!-- Info button -->
+    <button type="button" id="menu-bar-profile-icon">
+      <i class="material-icons">info</i>
+    </button>
+  </div>
 </div>
 {% endblock %}
 
@@ -30,13 +52,13 @@ depending on the state. -->
      Initial state is user's available game list and game creator. -->
 {% block appcontainer %}
 <div id="app-container">
-  <div v-show="show_lcont">
+  <div v-show="show_lcont.value">
     {% include "characters.html" %}
   </div>
-  <div v-show="show_mcont">
+  <div v-show="show_mcont.value">
     {% include "story.html" %}
   </div>
-  <div v-show="show_rcont">
+  <div v-show="show_rcont.value">
     {% include "notes.html" %}
   </div>
 </div>

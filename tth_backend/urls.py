@@ -15,7 +15,7 @@ urlpatterns = [
   path("accounts/", include("django.contrib.auth.urls")),
 
   # Campaign view.
-  # path("campaign/<slug:campaign_name>",
+  # path("campaign/<slug:camp_name>",
     # views.campaign, name="campaign"),
 
   # Create campaign view.
@@ -23,20 +23,25 @@ urlpatterns = [
     views.create_campaign, name="create_campaign"),
 
   # Join campaign view.
-  path("campaign/<slug:campaign_name>/join",
+  path("campaign/<slug:camp_name>/join",
     views.join_campaign, name="join_campaign"),
 
   # Continue campaign view.
-  path("campaign/<slug:campaign_name>/continue",
+  path("campaign/<slug:camp_name>/continue",
     views.continue_campaign, name="continue_campaign"),
 
-  # Participants's campaign view
-  path("campaign/<slug:campaign_name>/<slug:username>",
-    views.userview, name="userview"),
+  # User's campaign view
+  path("campaign/<slug:camp_name>/<slug:usr_name>",
+    views.user_view, name="user_view"),
 
   # Character view
-  path("campaign/<slug:campaign_name>/<slug:username>/<slug:character>",
-    views.character_data, name="character"),
+  path("campaign/<slug:camp_name>/<slug:usr_name>/<slug:character_name>",
+    views.character_data, name="character_data"),
 
+
+
+  # Operation director
+  path("campaign/<slug:camp_name>/<slug:usr_name>/operation/<slug:operation>",
+    views.user_operation, name="user_operation"),
 
 ]

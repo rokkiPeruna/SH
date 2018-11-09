@@ -1,8 +1,13 @@
 <div class="campaign_characters">
-  <h2>{{campaign_name}}</h2>
+  <h2>{{camp_name}}</h2>
   <h3>CHARACTERS:</h3>
   <hr>
-  <div id="campaign-story-section">
+  <div id="campaign-characters-section">
+    <form action={% url 'tth:user_operation' camp_name=camp_name usr_name=user.username operation='create_character' %} method="post">
+    {% csrf_token %}
+    <input type="text" name="char-name" placeholder="Character name here" required>
+  </form>
+
   {% if characters %}
     {% for character in characters  %}
       <h4>{{character.name}}</h4>

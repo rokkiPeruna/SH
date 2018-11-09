@@ -37,16 +37,16 @@ class CampaignManager(models.Manager):
   # Add campaign to database if no name conflicts. Adds creator as the game master.
   # On failure returns False and error message.
   # On success returns the campaign.
-  def add_campaign(user, cname, gmpw, plpw, sdesc):
+  def add_campaign(user, camp_name, gmpw, plpw, sdesc):
     try: #to find existing campaign
-      Campaign.objects.get(name__exact=cname)
+      Campaign.objects.get(name__exact=camp_name)
     except Campaign.DoesNotExist as success: #No such campaign exists!
-      campaign = Campaign.objects.create(name=cname, gmpassword=gmpw, playerpassword=plpw, shortdescription=sdesc)
+      campaign = Campaign.objects.create(name=camp_name, gmpassword=gmpw, playerpassword=plpw, shortdescription=sdesc)
       user.campaigns.add(campaign)
       return campaign, "Successfully created campaing!"
     except models.MultipleObjectsReturned as err:
       # Something is terribly wrong
-      return False, "Multiple campaigns with name {} exists!".format(cname)
+      return False, "Multiple campaigns with name {} exists!".format(camp_name)
     else:
       return False, "Internal error when adding campaign"
 
@@ -54,9 +54,9 @@ class CampaignManager(models.Manager):
   # Adds user to campaign if campaign with given name exists and password matches.
   # Returns False and error message if joining fails or campaign doesn't exist.
   # Returns True and campaign model on successful join.
-  def join_campaign(user, cname, cpw):
+  def join_campaign(user, camp_name, cpw):
     try:
-      campaign = Campaign.objects.get(name__exact=cname)
+      campaign = Campaign.objects.get(name__exact=camp_name)
       if campaign.playerpassword == cpw:
         user.campaigns.add(campaign)
         return True, campaign
@@ -67,10 +67,10 @@ class CampaignManager(models.Manager):
       return False, "No campaign with that name"
 
   # Get campaign by name. Returns campaign model on success, False on failure
-  def get_campaign_by_name(cname):
+  def get_campaign_by_name(camp_name):
     # Check that campaign exists
-    try :
-      campaign = Campaign.objects.get(name__exact=cname)
+    try:
+      campaign = Campaign.objects.get(name__exact=camp_name)
       return campaign
     except Campaign.MultipleObjectsReturned as err:
       # TODO: Log properly
@@ -80,7 +80,7 @@ class CampaignManager(models.Manager):
       return False
 
   # Remove campaign from database (only game master is authorized)
-  def remove_campaign(cname):
+  def remove_campaign(camp_name):
     pass
 
 ######################################################################
@@ -127,7 +127,7 @@ class User(AbstractUser):
   last_saved = models.DateField(auto_now=True)
 
   def __str__(self):
-    return self.username
+    return self.usr_name
 
 
 ######################################################################
@@ -135,20 +135,20 @@ class User(AbstractUser):
 ######################################################################
 class CharacterManager(models.Manager):
   # Returns campaigns all character models as queryset (NOTE: for GM only)
-  def get_campaign_characters(campaign_name):
+  def get_campaign_characters(camp_name):
       return None
 
   # Creates character and binds it to given user
   def create_character(user, name):
     Character.objects.create(
-      owner=user,
+      user=user,
       name=name,
       datasheet="{data: dummy data}"
     )
 
   # Returns all user's characters
-  def get_characters(user):
-    return None
+  def get_user_characters(user):
+    return Character.objects.filter(user_id=user.id)
 
   # Deletes character
   def delete_character(name):
@@ -160,8 +160,7 @@ class CharacterManager(models.Manager):
 
 
 ######################################################################
-# Character represents a character in a game campaign. It can be a user's
-# character or an NPC created by the game master(s).
+# Character represents a character in a game campaign.
 ######################################################################
 class Character(models.Model):
   # Each normal character is bound to a single user

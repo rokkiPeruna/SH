@@ -6,21 +6,21 @@ var main_lobby_menu_bar = new Vue({
 
   },
   methods: {
-    onLeftPressed: function() {
+    onMainLeftPressed: function() {
       if ( !mlobby_cont.show_lcont ) {
         mlobby_cont.show_lcont = !mlobby_cont.show_lcont;
         mlobby_cont.show_mcont = false;
         mlobby_cont.show_rcont = false;
       }
     },
-    onMiddlePressed: function() {
+    onMainMiddlePressed: function() {
       if ( !mlobby_cont.show_mcont ) {
         mlobby_cont.show_mcont = !mlobby_cont.show_mcont;
         mlobby_cont.show_lcont = false;
         mlobby_cont.show_rcont = false;
       }
     },
-    onRightPressed: function() {
+    onMainRightPressed: function() {
       if ( !mlobby_cont.show_rcont ) {
         mlobby_cont.show_rcont = !mlobby_cont.show_rcont;
         mlobby_cont.show_lcont = false;
