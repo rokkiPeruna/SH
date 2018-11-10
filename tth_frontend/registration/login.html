@@ -33,19 +33,33 @@
         </div>
       </div>
 
+      <!-- For user error handling -->
+      {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+        {% else %}
+          <p>Please login to see this page.</p>
+        {% endif %}
+      {% endif %}
+
       {# <!-- Login logic from MDN and 'simpleisbetter' --> #}
       <div class="login-form">
         <hr>
         <h2 class="highlighted">Login to your account</h2>
         <hr>
-        <form class="login-form" method="POST">
+        <form class="login-form" method="POST" action="{% url 'tth:login' %}">
           {% csrf_token %}
           <p>
-            <input type="text" name="usr_name" placeholder="Username">
+            <input type="text" name="username" placeholder="Username">
           </p>
           <p>
             <input type="password" name="password" placeholder="Password">
           </p>
+
           <button type="submit">Login</button>
         </form>
 

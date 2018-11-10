@@ -83,7 +83,7 @@ def create_campaign(request):
   else:
     result = CampaignManager.add_campaign(request.user, camp_name, gm_pw, pl_pw, sdesc)
     if result[0] != False:
-      return redirect("tth:user_view", camp_name=camp_name, usr_name=request.user.usr_name)
+      return redirect("tth:user_view", camp_name=camp_name, usr_name=request.user.username)
     else:
       return HttpResponse("Failed to create campaign '{}'. Error: {}".format(camp_name, result[1]))
 

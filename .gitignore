@@ -1,4 +1,7 @@
 tth_backend/__pycache__
 tth_backend/migrations/__pycache__
-dummyserver/*
+# Development branch carries dummyserver and SQLite3 db along for easy migration
+# dummyserver/*
+# *.sqlite3
+dummyserver/__pycache__
 manage.py

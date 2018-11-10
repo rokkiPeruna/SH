@@ -127,7 +127,7 @@ class User(AbstractUser):
   last_saved = models.DateField(auto_now=True)
 
   def __str__(self):
-    return self.usr_name
+    return self.username
 
 
 ######################################################################
