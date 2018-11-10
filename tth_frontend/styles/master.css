@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6, p, li {
   align-items: center;
 }
 /* Buttons with text */
-.menu-bar div button[id$="-btn"] {
+.menu-bar div .menu-bar-btn {
   flex: 1;
   text-align: center;
   height: inherit;
@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6, p, li {
   background-color: var(--main-menu-bar-btn-color);
   /* padding: 0.1em 0.1em; */
 }
-.menu-bar div button[id$="-btn"]:hover {
+.menu-bar div .menu-bar-btn:hover {
   background-color: var(--main-menu-bar-btn-hover-color);
   color: var(--main-menu-bar-btn-color);
 }
@@ -121,17 +121,17 @@ h1, h2, h3, h4, h5, h6, p, li {
 .menu-bar div .material-icons {
   font-size: 3em;
 }
-.menu-bar div button[id$="-icon"] {
+.menu-bar div .menu-bar-icon {
   background-color: var(--main-menu-bar-icon-color);
   border: 0.2em solid var(--main-menu-bar-icon-border-color);
   height: inherit;
   width: 7em;
 }
-.menu-bar div button[id$="-icon"]:hover {
+.menu-bar div .menu-bar-icon:hover {
   background-color: var(--main-button-hover-color);
   background-color: var(--main-menu-bar-btn-hover-color);
 }
-#menu-bar-profile-icon { /*Stick to rigth even when no buttons*/
+#menu-bar-right-icon { /*Stick to rigth even when no buttons*/
   margin-left: auto;
 }
 

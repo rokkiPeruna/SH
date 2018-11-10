@@ -19,29 +19,37 @@ var campaign_lobby_menu_bar = new Vue({
     show_main_functionality: true
   },
   methods: {
-    onMenuIconPressed: function() {
-      this.show_main_functionality = !this.show_main_functionality;
-
+    // Main functionalities are fixed
+    onMainLeftIconPressed: function() {
+      console.log("Main left icon pressed");
+    },
+    onMainRightIconPressed: function() {
+      console.log("Main right icon pressed");
     },
     onMainLeftPressed: function() {
-      if ( !clobby_cont.show_lcont.value ) {
-        clobby_cont.set_active_cont(clobby_cont.show_lcont);
-
-      }
+      if ( clobby_cont.show_lcont.value ) return; // Prohibit multiple presses
+      clobby_cont.set_active_cont(clobby_cont.show_lcont);
+      this.show_main_functionality = false;
     },
     onMainMiddlePressed: function() {
-      if ( !clobby_cont.show_mcont.value ) {
-        clobby_cont.set_active_cont(clobby_cont.show_mcont);
-
-      }
+      if ( clobby_cont.show_mcont.value ) return; // Prohibit multiple presses
+      clobby_cont.set_active_cont(clobby_cont.show_mcont);
+      this.show_main_functionality = false;
     },
     onMainRightPressed: function() {
-      if ( !clobby_cont.show_rcont.value ) {
-        clobby_cont.set_active_cont(clobby_cont.show_rcont);
+      if ( clobby_cont.show_rcont.value ) return; // Prohibit multiple presses
+      clobby_cont.set_active_cont(clobby_cont.show_rcont);
+      this.show_main_functionality = false;
 
-      }
     },
-    // Secondary functionalities are set as callbacks
+    // Secondary functionalities are mostly set as callbacks, return button is fixed
+    onSecLeftIconPressed: function() {
+      this.show_main_functionality = !this.show_main_functionality;
+      console.log("Secondary left icon pressed");
+    },
+    onSecRightIconPressed: function() {
+      console.log("Secondary right icon pressed");
+    },
     onSecLeftPressed: function() {
       console.log("Secondary left pressed");
     },

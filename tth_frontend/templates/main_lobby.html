@@ -15,13 +15,17 @@
 depending on the state. -->
 {% block menubarcontent %}
 <div class="menu-bar">
-  <button type="button" id="menu-bar-menu-icon">
-    <i class="material-icons">menu</i>
-  </button>
-  <button type="button" id="menu-bar-left-btn" v-on:click="onMainLeftPressed">CREATE</button>
-  <button type="button" id="menu-bar-middle-btn" v-on:click="onMainMiddlePressed">JOIN</button>
-  <button type="button" id="menu-bar-rigth-btn" v-on:click="onMainRightPressed">CONTINUE</button>
-  <h3>Logged in as<br>{{logged_user}}</h3>
+  <div>
+    <button type="button" class="menu-bar-icon">
+      <i class="material-icons">menu</i>
+    </button>
+    <button type="button" class="menu-bar-btn" v-on:click="onMainLeftPressed">CREATE</button>
+    <button type="button" class="menu-bar-btn" v-on:click="onMainMiddlePressed">JOIN</button>
+    <button type="button" class="menu-bar-btn" v-on:click="onMainRightPressed">CONTINUE</button>
+    <button type="button" class="menu-bar-icon" id="menu-bar-right-icon">
+      <i class="material-icons">info</i>
+    </button>
+  </div>
 </div>
 {% endblock %}
 
